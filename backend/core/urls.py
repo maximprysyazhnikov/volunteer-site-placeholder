@@ -29,6 +29,7 @@ urlpatterns = [
         name='redoc',
     ),
     path("api/v1/", include("main.urls")),
+    path("api/v1/user/", include("user.urls")),
     path("api/v1/token/", CustomTokenObtainPairView.as_view(), name="token_obtain_pair"),
     path("api/v1/token/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
 ] + debug_toolbar_urls()
