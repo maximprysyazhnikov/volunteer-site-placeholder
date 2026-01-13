@@ -27,6 +27,7 @@ INSTALLED_APPS = [
 
     #Third-party
     'rest_framework',
+    'drf_spectacular',
 
     #Local
     'main',
@@ -107,6 +108,7 @@ STATIC_URL = 'static/'
 
 
 REST_FRAMEWORK = {
+'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.AllowAny',
     ],
@@ -114,4 +116,14 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.BasicAuthentication',
     ],
+}
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Wings of Help API',
+    'DESCRIPTION': 'API documentation for Wings of Help backend',
+    'VERSION': '1.0.0',
+
+    'SERVE_INCLUDE_SCHEMA': False,
+
+    'COMPONENT_SPLIT_REQUEST': True,
 }
