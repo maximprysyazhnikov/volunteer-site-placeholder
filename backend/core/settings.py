@@ -33,6 +33,7 @@ INSTALLED_APPS = [
 
     #Local
     'main',
+    'user'
 ]
 
 MIDDLEWARE = [
