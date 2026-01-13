@@ -68,6 +68,7 @@ dist/
 Thumbs.db
 
 .idea/
+../.idea/
 .vscode/
 
 # ===============================
