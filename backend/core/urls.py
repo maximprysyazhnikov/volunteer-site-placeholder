@@ -5,6 +5,7 @@ from drf_spectacular.views import (
     SpectacularSwaggerView,
     SpectacularRedocView,
 )
+from debug_toolbar.toolbar import debug_toolbar_urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,4 +26,4 @@ urlpatterns = [
         name='redoc',
     ),
     path("api/v1/", include("main.urls")),
-]
+] + debug_toolbar_urls()
