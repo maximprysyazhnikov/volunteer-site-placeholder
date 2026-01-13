@@ -1,0 +1,83 @@
+# ===============================
+# Python
+# ===============================
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.log
+
+# ===============================
+# Virtual Environments
+# ===============================
+venv/
+.env/
+.env.*
+.venv/
+
+# ===============================
+# Django
+# ===============================
+# SQLite
+db.sqlite3
+
+# Media & static
+media/
+staticfiles/
+
+# Collected static (if used)
+static/
+
+# Django cache
+*.cache
+
+# ===============================
+# Django migrations
+# (keep __init__.py!)
+# ===============================
+**/migrations/*
+!**/migrations/__init__.py
+
+# ===============================
+# Environment / secrets
+# ===============================
+.env
+.env.dev
+.env.prod
+
+# ===============================
+# Tests / coverage
+# ===============================
+.pytest_cache/
+.coverage
+htmlcov/
+coverage.xml
+
+# ===============================
+# Build / packaging
+# ===============================
+build/
+dist/
+*.egg-info/
+
+# ===============================
+# OS / Editor junk
+# ===============================
+.DS_Store
+Thumbs.db
+
+.idea/
+.vscode/
+
+# ===============================
+# Docker
+# ===============================
+.env.docker
+docker-compose.override.yml
+
+# ===============================
+# Logs
+# ===============================
+logs/
+*.log
