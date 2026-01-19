@@ -47,3 +47,16 @@ class RegisterSerializer(serializers.ModelSerializer):
             **validated_data
         )
         return user
+
+
+class UserRetrieveSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = [
+            "email",
+            "first_name",
+            "last_name",
+            "phone_number",
+            "role",
+        ]
+        read_only_fields = ["role"]
