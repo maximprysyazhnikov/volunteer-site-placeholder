@@ -9,7 +9,7 @@ class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
     def get_token(cls, user):
         token = super().get_token(user)
         token["role"] = user.role
-        token["username"] = user.username
+        token["email"] = user.email
         return token
 
 
@@ -26,18 +26,24 @@ class RegisterSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ["username", "password", "email", "role"]
+        fields = [
+            "email",
+            "password",
+            "first_name",
+            "last_name",
+            "phone_number",
+            "role",
+        ]
 
     def validate_password(self, value):
         validate_password(value)
         return value
 
     def create(self, validated_data):
+        password = validated_data.pop("password")
+
         user = User.objects.create_user(
-            username=validated_data["username"],
-            email=validated_data["email"],
-            role=validated_data["role"],
+            password=password,
+            **validated_data
         )
-        user.set_password(validated_data["password"])
-        user.save()
         return user
