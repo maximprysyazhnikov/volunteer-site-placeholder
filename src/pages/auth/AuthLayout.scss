@@ -1,0 +1,320 @@
+@use '../../styles/variables' as *;
+
+.auth-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: $color-white;
+
+  &__header {
+    margin: 24px 108px 0;
+    height: $control-height;
+    display: flex;
+    align-items: center;
+  }
+
+  &__brand {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    text-decoration: none;
+    color: $color-black;
+  }
+
+  &__logo {
+    width: 32px;
+    height: 32px;
+  }
+
+  &__title {
+    font-family: $font-main;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1;
+    color: $color-black;
+  }
+
+  &__form {
+    display: flex;
+    justify-content: center;
+    margin-top: 88px;
+  }
+
+  &__container {
+    width: $container-width;
+  }
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  &__actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 8px;
+  }
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__title {
+    font-family: $font-main;
+    font-weight: 500;
+    font-size: 56px;
+    line-height: 1.25;
+    color: $color-black;
+    margin: 0;
+  }
+
+  &__subtitle {
+    font-family: $font-main;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.4;
+    color: $color-black;
+  }
+
+  &__step {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: $font-main;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 1.4;
+    color: $color-black;
+  }
+
+  &__back {
+    background: none;
+    border: none;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    img {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  &__fields {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__label {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 16px;
+    font-family: $font-main;
+  }
+
+  &__label-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__error {
+    font-size: 14px;
+    line-height: 1.4;
+    color: $color-error;
+    font-weight: 400;
+  }
+
+  &__input {
+    width: 100%;
+    height: $control-height;
+    padding: 16px;
+    border: 1px solid $color-gray-main;
+    border-radius: 4px;
+    font-size: 16px;
+    font-family: $font-main;
+    color: $color-black;
+
+    &:focus {
+      outline: none;
+      border-color: $color-gray-main;
+    }
+
+    &::placeholder {
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 1.4;
+      color: $color-gray-hint;
+    }
+
+    &--error {
+      border-color: $color-error;
+    }
+  }
+
+  &__button {
+    width: 100%;
+    height: $control-height;
+    background: $color-gray-main;
+    color: $color-white;
+    border: none;
+    border-radius: 0;
+    font-family: $font-main;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.4;
+    cursor: pointer;
+
+    &--active {
+      background: $color-black;
+    }
+  }
+
+  &__signin {
+    margin-top: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    font-family: $font-main;
+    font-size: 16px;
+    line-height: 1.4;
+    color: $color-black;
+  }
+
+  &__signin-link {
+    color: $color-black;
+    text-decoration: underline;
+    font-weight: 400;
+  }
+
+  &__hint {
+    font-family: $font-main;
+    font-size: 16px;
+    line-height: 1.4;
+    font-weight: 400;
+    color: $color-gray-hint;
+  }
+
+  &__phone {
+    display: flex;
+    height: $control-height;
+    border: 1px solid $color-gray-border;
+  }
+
+  &__country {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0 16px;
+    background: $color-gray-bg;
+    border-right: 1px solid $color-gray-border;
+
+    img {
+      width: 18px;
+      height: 18px;
+    }
+
+    span {
+      font-size: 18px;
+      font-family: $font-main;
+    }
+  }
+
+  &__phone-input {
+    flex: 1;
+    border: none;
+    padding: 0 16px;
+    font-size: 18px;
+    font-family: $font-main;
+    outline: none;
+
+    &::placeholder {
+      color: $color-gray-main;
+      font-size: 18px;
+    }
+  }
+
+  &__radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__radio-title {
+    font-family: $font-main;
+    font-size: 18px;
+    font-weight: 400;
+    color: $color-black;
+  }
+
+  &__radio {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: $font-main;
+    font-size: 18px;
+    font-weight: 400;
+    color: $color-black;
+    cursor: pointer;
+
+    input {
+      width: 24px;
+      height: 24px;
+      cursor: pointer;
+      accent-color: $color-gray-main;
+    }
+  }
+
+  &__password {
+    position: relative;
+  }
+
+  &__eye {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+  }
+
+  &__checkbox {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-family: $font-main;
+  }
+
+  &__checkbox-box {
+    width: 24px;
+    height: 24px;
+    border: 1px solid $color-gray-main;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &--checked {
+      border-color: $color-black;
+    }
+
+    img {
+      width: 16px;
+      height: 12px;
+    }
+  }
+
+  &__checkbox-text {
+    line-height: 1.4;
+  }
+}
