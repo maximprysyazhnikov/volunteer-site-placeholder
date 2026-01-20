@@ -1,0 +1,38 @@
+.lang-dropdown {
+  position: relative;
+  height: 57px;
+
+  &__menu {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    
+    &-item {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-width: 80px;
+      height: 28px;
+      background-color: #F1F1F4;
+    }
+  }
+}
+
+.lang-changer {
+  padding: 0;
+  background-color: #F1F1F4;
+  border: none;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 140%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.arrow {
+  width: 24px;
+  height: 24px;
+}
