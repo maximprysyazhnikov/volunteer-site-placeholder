@@ -6,7 +6,7 @@ export default function Footer() {
     <footer className="footer">
       <nav className="footer__nav">
         <div className='footer__nav__wings-sector'>
-        <img className="footer__nav__logo" src="public/images/ui/Header-Logo-Image.png" alt="footer-logo" />
+        <img className="footer__nav__logo" src="/images/ui/Header-Logo-Image.png" alt="footer-logo" />
         <p className="footer__nav__wings-sector__title">Wings of help</p>
       </div>
 

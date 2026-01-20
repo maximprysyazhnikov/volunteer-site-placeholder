@@ -2,7 +2,6 @@ import { useState } from 'react';
 import "./LangChanger.scss"
 import { useTranslation } from "react-i18next"
 
-
 export const LangChanger = () => {
   const [open, setOpen] = useState(false);
   const [lang, setLang] = useState('EN');
@@ -22,7 +21,7 @@ export const LangChanger = () => {
       >
         {lang}
 
-        <img className="arrow" src="public/images/ui/ep_arrow-down.png" alt="dropdown" />
+        <img className="arrow" src="/images/ui/ep_arrow-down.png" alt="dropdown" />
       </button>
 
       {open && (
