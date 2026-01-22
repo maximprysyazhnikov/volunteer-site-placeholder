@@ -15,10 +15,10 @@ export default function Header() {
   return (
     <header className='header'>
       <nav className='header__nav'>
-        <div className='header__nav__wings-sector'>
+        <Link to='/' className='header__nav__wings-sector header__nav__brand'>
           <img src={logo} alt='header-logo' />
           <p className='header__nav__wings-sector__title'>Wings of help</p>
-        </div>
+        </Link>
 
         <div className='header__nav__pages'>
           <div className='header__nav__pages__page'>
