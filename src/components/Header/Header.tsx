@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { LangChanger } from '../LangChanger/LangChanger';
 import { Link } from 'react-router-dom';
+import logo from '../../assets/header_logo_image.svg';
 
 import './Header.scss';
 
@@ -10,7 +11,7 @@ export default function Header() {
     <header className='header'>
       <nav className='header__nav'>
         <div className='header__nav__wings-sector'>
-          <img src='src/assets/header_logo_image.svg' alt='header-logo' />
+          <img src={logo} alt='header-logo' />
           <p className='header__nav__wings-sector__title'>Wings of help</p>
         </div>
 
