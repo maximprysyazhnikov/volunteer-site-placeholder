@@ -45,7 +45,7 @@ const SignUpStep2 = () => {
     <SignUpForm step={2} isValid={isFilled} onContinue={handleContinue}>
       <label className='auth-form__label auth-form__label--with-error'>
         <span className='auth-form__label-row'>
-          <span>Email</span>
+          <span className='auth-form__label-text'>Email</span>
           {emailError && (
             <span className='auth-form__error'>Invalid email</span>
           )}
@@ -55,6 +55,7 @@ const SignUpStep2 = () => {
           className={`auth-form__input ${emailError ? 'auth-form__input--error' : ''}`}
           type='email'
           value={email}
+          placeholder='Enter your email'
           onChange={(e) => {
             setEmail(e.target.value);
             setEmailError(false);
@@ -63,7 +64,7 @@ const SignUpStep2 = () => {
       </label>
 
       <label className='auth-form__label'>
-        Phone number
+        <span className='auth-form__label-text'>Phone number</span>
         <div className='auth-form__phone'>
           <div className='auth-form__country'>
             <img src={uaFlag} alt='UA' />

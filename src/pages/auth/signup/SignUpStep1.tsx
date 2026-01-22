@@ -21,19 +21,21 @@ const SignUpStep1 = () => {
       onContinue={() => navigate('/signup/step-2')}
     >
       <label className='auth-form__label'>
-        First name
+        <span className="auth-form__label-text">First name</span>
         <input
           className='auth-form__input'
           value={firstName}
+          placeholder='Enter your first name'
           onChange={(e) => setFirstName(capitalize(e.target.value))}
         />
       </label>
 
       <label className='auth-form__label'>
-        Last name
+        <span className="auth-form__label-text">Last name</span>
         <input
           className='auth-form__input'
           value={lastName}
+          placeholder='Enter your last name'
           onChange={(e) => setLastName(capitalize(e.target.value))}
         />
       </label>

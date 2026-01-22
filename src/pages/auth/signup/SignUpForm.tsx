@@ -29,7 +29,7 @@ const SignUpForm = ({ step, isValid, onContinue, children }: Props) => {
 
       <div className='auth-form__fields'>{children}</div>
 
-      <div className='auth-form__actions'>
+      <div className='auth-form__actions auth-form__actions--signup'>
         <button
           className={`auth-form__button ${isValid ? 'auth-form__button--active' : ''}`}
           disabled={!isValid}
