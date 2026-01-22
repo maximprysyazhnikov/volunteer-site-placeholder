@@ -98,7 +98,10 @@ def confirm_password_reset(request):
     if not reset_code or reset_code.is_expired():
         raise ValidationError("Invalid or expired code")
 
-    validate_password(new_password, user)
+    try:
+        validate_password(new_password, user)
+    except Exception as ex:
+        return Response({"detail": f"{ex}"}, status=status.HTTP_400_BAD_REQUEST)
 
     user.set_password(new_password)
     user.save()
@@ -106,4 +109,4 @@ def confirm_password_reset(request):
     reset_code.is_used = True
     reset_code.save()
 
-    return Response({"detail": "Password successfully changed"})
+    return Response({"detail": "Password successfully changed"}, status=status.HTTP_200_OK)
