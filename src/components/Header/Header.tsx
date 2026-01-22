@@ -2,11 +2,16 @@ import { useTranslation } from 'react-i18next';
 import { LangChanger } from '../LangChanger/LangChanger';
 import { Link } from 'react-router-dom';
 import logo from '../../assets/header_logo_image.svg';
+import { useAuth } from '../../context/AuthContext';
+import profileIcon from '../../assets/profile.svg';
 
 import './Header.scss';
 
 export default function Header() {
   const { t } = useTranslation();
+  const { isAuth, logout } = useAuth();
+  console.log('HEADER: render, isAuth =', isAuth);
+
   return (
     <header className='header'>
       <nav className='header__nav'>
@@ -27,17 +32,30 @@ export default function Header() {
         <div className='header__nav__buttons'>
           <LangChanger />
 
-          <Link to='/signin'>
-            <button className='header__nav__buttons__button sign-in'>
-              {t('Sign-in')}
-            </button>
-          </Link>
+          {!isAuth ? (
+            <>
+              <Link to='/signin'>
+                <button className='header__nav__buttons__button sign-in'>
+                  {t('Sign-in')}
+                </button>
+              </Link>
 
-          <Link to='/signup/step-1'>
-            <button className='header__nav__buttons__button sign-up'>
-              {t('Sign-up')}
-            </button>
-          </Link>
+              <Link to='/signup/step-1'>
+                <button className='header__nav__buttons__button sign-up'>
+                  {t('Sign-up')}
+                </button>
+              </Link>
+            </>
+          ) : (
+            <>
+              <Link to='/profile'>
+                <button className='header__nav__buttons__button header__profile-btn'>
+                  <img src={profileIcon} alt='' />
+                  {t('My profile')}
+                </button>
+              </Link>
+            </>
+          )}
         </div>
       </nav>
     </header>

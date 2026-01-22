@@ -1,0 +1,11 @@
+.profile {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile__title {
+  font-size: 48px;
+  font-weight: 500;
+}

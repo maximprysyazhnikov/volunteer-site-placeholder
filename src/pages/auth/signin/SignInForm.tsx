@@ -2,12 +2,14 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import eyeClosed from '../../../assets/eye-closed.svg';
 import eyeOpen from '../../../assets/eye-open.svg';
+import { useAuth } from '../../../context/AuthContext';
 
 const SignInForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [emailError, setEmailError] = useState(false);
+  const { login } = useAuth();
 
   const navigate = useNavigate();
 
@@ -24,7 +26,8 @@ const SignInForm = () => {
     if (!password) {
       return;
     }
-
+    console.log('SIGNIN: click');
+    login();
     navigate('/');
   };
 
