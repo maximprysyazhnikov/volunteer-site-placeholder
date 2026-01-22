@@ -10,7 +10,7 @@ export default function Header() {
     <header className='header'>
       <nav className='header__nav'>
         <div className='header__nav__wings-sector'>
-          <img src='public/images/ui/Header-Logo-Image.png' alt='header-logo' />
+          <img src='src/assets/header_logo_image.svg' alt='header-logo' />
           <p className='header__nav__wings-sector__title'>Wings of help</p>
         </div>
 
