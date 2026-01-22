@@ -67,6 +67,10 @@
         display: flex;
         align-items: center;
         justify-content: center;
+
+        &.lang-changer {
+          background-color: #f1f1f4;
+        }
       }
     }
   }
