@@ -33,7 +33,7 @@ export default function Header() {
             </button>
           </Link>
 
-          <Link to='/signup'>
+          <Link to='/signup/step-1'>
             <button className='header__nav__buttons__button sign-up'>
               {t('Sign-up')}
             </button>

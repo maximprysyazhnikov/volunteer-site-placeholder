@@ -29,7 +29,7 @@ export const Root = () => (
           <Route path="/signin" element={<SignInPage />} />
 
           <Route path="signup">
-            <Route index element={<Navigate to="step-1" />} />
+            <Route index element={<Navigate to="step-1"/>} />
             <Route path="step-1" element={<SignUpStep1 />} />
             <Route path="step-2" element={<SignUpStep2 />} />
             <Route path="step-3" element={<SignUpStep3 />} />
