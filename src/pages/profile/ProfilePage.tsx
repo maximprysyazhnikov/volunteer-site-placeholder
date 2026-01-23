@@ -7,7 +7,7 @@ import infoIcon from '../../assets/profile2.svg';
 import requestsIcon from '../../assets/HandsPraying.svg';
 import responsesIcon from '../../assets/ArrowsClockwise.svg';
 import logoutIcon from '../../assets/logout.svg';
-import uploadIcon from '../../assets/upload.svg';
+// import uploadIcon from '../../assets/upload.svg';
 
 const userFromServer = {
   firstName: 'Cody',

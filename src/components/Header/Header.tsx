@@ -9,7 +9,7 @@ import './Header.scss';
 
 export default function Header() {
   const { t } = useTranslation();
-  const { isAuth, logout } = useAuth();
+  const { isAuth} = useAuth();
   console.log('HEADER: render, isAuth =', isAuth);
 
   return (
