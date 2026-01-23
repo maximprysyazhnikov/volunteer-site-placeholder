@@ -1,0 +1,99 @@
+.footer {
+  // width: 100%;
+  // height: 50%;
+  display: flex;
+  margin-bottom: 24px;
+  // position: absolute;
+  // top: 110;
+  // top: 330px;
+  
+  &__nav {
+    // background-color: grey;
+    margin-inline: 108px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-self: flex-start;
+
+    &__wings-sector {
+      max-width: 207px;
+      height: 46px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      
+      gap: 4px;
+    
+      &__title {
+        font-weight: 500;
+        font-size: 23px;
+        line-height: 100%;
+      }
+    }
+
+    &__discribe {
+      font-weight: 400;
+      font-style: Regular;
+      font-size: 24px;
+      line-height: 140%;
+    }
+
+    &__logo {
+      width: 46px;
+      height: 46px;
+    }
+    
+    &__contacts {
+      display: flex;
+      // justify-content: space-between;
+    }
+
+    &__support {
+      font-weight: 400;
+      font-style: Regular;
+      font-size: 18px;
+      line-height: 140%;
+      padding-right: 10%;
+    }
+
+    &__explores {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+
+      &__requests {
+        font-weight: 400;
+        font-style: Regular;
+        font-size: 18px;
+        line-height: 140%;
+      }
+
+      &__offers {
+        font-weight: 400;
+        font-style: Regular;
+        font-size: 18px;
+        line-height: 140%;
+      }
+    }
+
+    &__end {
+      margin-top: 80px;
+      width: 100%;
+      display: flex;
+      justify-content: space-between
+      ;
+      &__wings {
+        font-weight: 400;
+        font-style: Regular;
+        font-size: 18px;
+        line-height: 140%;
+      }
+      &__terms {
+        font-weight: 400;
+        font-style: Regular;
+        font-size: 18px;
+        line-height: 140%;
+      }
+    }
+  }  
+}

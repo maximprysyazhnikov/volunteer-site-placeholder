@@ -1,0 +1,74 @@
+.header {
+  height: 57px;
+  margin-top: 24px;
+  width: 100%;
+  display: flex;
+  margin-bottom: 1px;
+
+  &__nav {
+    margin-inline: 108px;
+    width: 100%;
+    // background-color: grey;
+    display: flex;
+    justify-content: space-between;
+    
+    &__wings-sector {
+      width: 288px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+
+      &__title {
+        font-weight: 500;
+        font-style: Medium;
+        font-size: 16px;
+        line-height: 100%;
+      }
+    }
+
+    &__pages {
+      display: flex;
+      justify-self: center;
+      align-self: center;
+      &__page {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 184px;
+        height: 41px;
+
+        &__title {
+          font-weight: 500;
+          font-size: 18px;
+          line-height: 140%;
+        }
+      }
+    }
+
+    &__buttons {
+      display: flex;
+      gap: 24px;
+      &__button {
+        height: 100%;
+        min-width: 80px;
+        box-sizing: border-box;
+      }
+    }
+  }
+}
+
+.sign-in {
+  border: 1px solid #000;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 140%;
+}
+
+.sign-up {
+  background-color: #000;
+  color: #fff;
+  font-weight: 400;
+  font-style: Regular;
+  font-size: 18px;
+  line-height: 140%;
+}
