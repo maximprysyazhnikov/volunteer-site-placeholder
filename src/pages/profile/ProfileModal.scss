@@ -1,0 +1,107 @@
+@use '../../styles/variables' as *;
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba($color-black, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal {
+  width: 600px;
+  background: $color-white;
+  padding: 24px;
+  box-shadow: 0 8px 32px rgba($color-black, 0.12);
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+    height: 56px;
+  }
+
+  &__title {
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 120%;
+    color: $color-black;
+  }
+
+  &__close {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: $color-input-bg;
+    border: none;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 32px;
+  }
+
+  &__label-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 16px;
+  }
+
+  &__label {
+    font-size: 16px;
+    color: $color-black;
+  }
+
+  &__error {
+    font-size: 14px;
+    color: $color-error;
+  }
+
+  &__input {
+    height: 56px;
+    padding: 0 16px;
+    background: $color-input-bg;
+    border: 1px solid transparent;
+    font-size: 18px;
+    outline: none;
+
+    &::placeholder {
+      color: $color-placeholder;
+      font-size: 18px;
+    }
+
+    &--error {
+      border-color: $color-error;
+    }
+  }
+
+  &__submit {
+    width: 100%;
+    height: 56px;
+    background: $color-gray-main;
+    color: $color-white;
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+
+    &--active {
+      background: $color-black;
+    }
+  }
+}

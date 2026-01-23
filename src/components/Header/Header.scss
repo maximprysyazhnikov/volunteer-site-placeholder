@@ -1,12 +1,14 @@
 .header {
   height: 57px;
-  margin-top: 24px;
+  max-width: 1400px;
+  margin: 24px auto 1px;
+
   width: 100%;
   display: flex;
   margin-bottom: 1px;
 
   &__nav {
-    margin-inline: 108px;
+    padding: 0 108px;
     width: 100%;
     // background-color: grey;
     display: flex;
@@ -72,6 +74,35 @@
           background-color: #f1f1f4;
         }
       }
+    }
+
+    &__brand {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      text-decoration: none;
+      color: inherit;
+    }
+  }
+
+  &__profile-btn {
+    width: 184px;
+    height: 57px;
+    padding: 16px;
+    background-color: #000;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    border: none;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 140%;
+
+    img {
+      width: 24px;
+      height: 24px;
     }
   }
 }
