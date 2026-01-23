@@ -9,6 +9,8 @@ import responsesIcon from '../../assets/ArrowsClockwise.svg';
 import logoutIcon from '../../assets/logout.svg';
 // import uploadIcon from '../../assets/upload.svg';
 
+import { ProfileModal } from './ProfileModal';
+
 const userFromServer = {
   firstName: 'Cody',
   lastName: 'Warren',
@@ -20,6 +22,9 @@ const userFromServer = {
 const ProfilePage = () => {
   const [originalUser, setOriginalUser] = useState(userFromServer);
   const [form, setForm] = useState(userFromServer);
+  const [activeModal, setActiveModal] = useState<
+    null | 'email' | 'phone' | 'password'
+  >(null);
 
   const { logout } = useAuth();
   const navigate = useNavigate();
@@ -92,7 +97,7 @@ const ProfilePage = () => {
                 {/* <div className='profile__avatar'>
                   <img src={profileFoto} alt='Profile avatar' />
                 </div> */}
-{/* 
+                {/* 
                 <div className='profile__header-actions'>
                   <button className='profile__upload-btn'>
                     <img src={uploadIcon} alt='' />
@@ -158,7 +163,12 @@ const ProfilePage = () => {
                     value={form.email}
                   />
                 </div>
-                <button className='profile__contact-btn'>Change</button>
+                <button
+                  className='profile__contact-btn'
+                  onClick={() => setActiveModal('email')}
+                >
+                  Change
+                </button>
               </div>
 
               <div className='profile__contact-row'>
@@ -170,7 +180,12 @@ const ProfilePage = () => {
                     value={form.phone}
                   />
                 </div>
-                <button className='profile__contact-btn'>Change</button>
+                <button
+                  className='profile__contact-btn'
+                  onClick={() => setActiveModal('phone')}
+                >
+                  Change
+                </button>
               </div>
 
               <div className='profile__contact-row'>
@@ -182,12 +197,21 @@ const ProfilePage = () => {
                     value='********'
                   />
                 </div>
-                <button className='profile__contact-btn'>Change</button>
+                <button
+                  className='profile__contact-btn'
+                  onClick={() => setActiveModal('password')}
+                >
+                  Change
+                </button>
               </div>
             </div>
           </div>
         </main>
       </div>
+
+      {activeModal && (
+        <ProfileModal type={activeModal} onClose={() => setActiveModal(null)} />
+      )}
     </div>
   );
 };

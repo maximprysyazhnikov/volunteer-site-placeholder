@@ -3,13 +3,16 @@
 .profile {
   display: flex;
   justify-content: center;
-  padding: clamp(24px, 5vw, 80px) clamp(16px, 6vw, 108px);
+  padding: 80px 0;
 
   &__layout {
-    display: grid;
-    grid-template-columns: 392px minmax(128px, 1fr) 704px;
     max-width: 1400px;
     width: 100%;
+    padding: 0 108px;
+    box-sizing: border-box;
+
+    display: grid;
+    grid-template-columns: 392px minmax(24px, 128px) 1fr;
   }
 
   &__sidebar {
@@ -87,7 +90,7 @@
   }
 
   &__card {
-    width: 704px;
+    // width: 704px;
     background: $color-white;
   }
 
@@ -132,7 +135,6 @@
     align-items: center;
     gap: 8px;
     cursor: pointer;
-
   }
 
   &__delete-btn {

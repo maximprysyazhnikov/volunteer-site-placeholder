@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import SignUpForm from './SignUpForm';
 import uaFlag from '../../../assets/flag-ukraine.svg';
+import { isEmailValid } from '../../../utils/validators';
+
 
 const SignUpStep2 = () => {
   const [email, setEmail] = useState('');
@@ -9,15 +11,13 @@ const SignUpStep2 = () => {
   const [emailError, setEmailError] = useState(false);
   const navigate = useNavigate();
 
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-  const isEmailValid = emailRegex.test(email);
+  const isEmailValidValue = isEmailValid(email);
   const isPhoneValid = phone.replace(/\D/g, '').length === 9;
 
   const isFilled = Boolean(email && phone);
 
   const handleContinue = () => {
-    if (!isEmailValid) {
+    if (!isEmailValidValue) {
       setEmailError(true);
       return;
     }

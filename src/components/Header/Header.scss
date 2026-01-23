@@ -1,12 +1,14 @@
 .header {
   height: 57px;
-  margin-top: 24px;
+  max-width: 1400px;
+  margin: 24px auto 1px;
+
   width: 100%;
   display: flex;
   margin-bottom: 1px;
 
   &__nav {
-    margin-inline: 108px;
+    padding: 0 108px;
     width: 100%;
     // background-color: grey;
     display: flex;
