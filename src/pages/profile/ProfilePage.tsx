@@ -1,5 +1,7 @@
 import './Profile.scss';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../context/AuthContext';
 import profileFoto from '../../assets/Profile_foto.svg';
 import infoIcon from '../../assets/profile2.svg';
 import requestsIcon from '../../assets/HandsPraying.svg';
@@ -18,6 +20,15 @@ const userFromServer = {
 const ProfilePage = () => {
   const [originalUser, setOriginalUser] = useState(userFromServer);
   const [form, setForm] = useState(userFromServer);
+
+  const { logout } = useAuth();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    // тут буде очистка токена
+    logout();
+    navigate('/');
+  };
 
   const isDirty =
     form.firstName !== originalUser.firstName ||
@@ -64,7 +75,10 @@ const ProfilePage = () => {
               <span>My Responses</span>
             </button>
 
-            <button className='profile__menu-item profile__menu-item--logout'>
+            <button
+              className='profile__menu-item profile__menu-item--logout'
+              onClick={handleLogout}
+            >
               <img src={logoutIcon} alt='' />
               <span>Log out</span>
             </button>
