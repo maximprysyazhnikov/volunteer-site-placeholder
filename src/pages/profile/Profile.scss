@@ -1,11 +1,262 @@
-.profile {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+@use '../../styles/variables' as *;
 
-.profile__title {
-  font-size: 48px;
-  font-weight: 500;
+.profile {
+  display: flex;
+  justify-content: center;
+  padding: clamp(24px, 5vw, 80px) clamp(16px, 6vw, 108px);
+
+  &__layout {
+    display: grid;
+    grid-template-columns: 392px minmax(128px, 1fr) 704px;
+    max-width: 1400px;
+    width: 100%;
+  }
+
+  &__sidebar {
+    grid-column: 1;
+    width: 392px;
+    height: 374px;
+    border: 1px solid $color-gray-main;
+    padding: 24px;
+  }
+
+  &__user {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  &__avatar--sidebar {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+  }
+
+  &__name {
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.4;
+  }
+
+  &__email {
+    font-size: 18px;
+    color: $color-gray-main;
+    line-height: 24px;
+  }
+
+  &__name,
+  &__email,
+  &__input,
+  &__contact-input {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  &__menu {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__menu-item {
+    height: 48px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 0 16px;
+    border: none;
+    background: transparent;
+    font-size: 18px;
+    cursor: pointer;
+    text-align: left;
+
+    &--active {
+      background: $color-black;
+      color: $color-white;
+    }
+
+    &--logout {
+      color: $color-error;
+      margin-top: 16px;
+    }
+  }
+
+  &__content {
+    grid-column: 3;
+  }
+
+  &__card {
+    width: 704px;
+    background: $color-white;
+  }
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  &__header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__header-actions {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__upload-btn {
+    width: 256px;
+    height: $control-height;
+    padding: 0 16px;
+    background: $color-upload-bg;
+    border: none;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+  }
+
+  &__delete-btn {
+    width: $control-height;
+    height: $control-height;
+    background: $color-upload-bg url('../../assets/garbage.svg') center
+      no-repeat;
+    border: none;
+    cursor: pointer;
+  }
+
+  &__title {
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 1.2;
+    margin-bottom: 24px;
+  }
+
+  &__label {
+    display: block;
+    font-size: 16px;
+    font-weight: 400;
+    padding: 0 16px;
+    line-height: 1.4;
+    color: $color-black;
+    margin-bottom: 4px;
+  }
+
+  &__input {
+    height: $control-height;
+    margin-bottom: 16px;
+    width: 100%;
+    border: 1px solid $color-gray-border;
+    padding: 16px;
+    font-size: 16px;
+    font-family: $font-main;
+    color: $color-black;
+  }
+
+  &__role {
+    height: $control-height;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 40px;
+  }
+
+  &__role-label {
+    font-size: 18px;
+    font-weight: 500;
+  }
+
+  &__role-value {
+    font-size: 18px;
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  &__save-btn {
+    width: 302px;
+    height: $control-height;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: $color-gray-main;
+    color: $color-white;
+    font-size: 18px;
+    border: none;
+    &--active {
+      background: $color-black;
+      cursor: pointer;
+    }
+  }
+
+  &__contacts {
+    margin-top: 40px;
+  }
+
+  &__contacts-title {
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 24px;
+    line-height: 1.2;
+  }
+
+  &__contact-row {
+    display: grid;
+    grid-template-columns: 1fr 184px;
+    gap: 24px;
+    align-items: end;
+    margin-bottom: 16px;
+  }
+
+  &__contact-field {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  &__contact-label {
+    font-size: 16px;
+    padding-left: 16px;
+    line-height: 1.2;
+    color: $color-black;
+  }
+
+  &__contact-input {
+    height: $control-height;
+    background: $color-input-bg;
+    border: none;
+    padding: 16px;
+    font-size: 18px;
+    color: $color-placeholder;
+  }
+
+  &__contact-btn {
+    width: 184px;
+    height: $control-height;
+    border: 1px solid $color-black;
+    background: $color-white;
+    font-size: 18px;
+    line-height: 1.2;
+    cursor: pointer;
+  }
 }

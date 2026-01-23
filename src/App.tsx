@@ -1,15 +1,17 @@
-import "./App.scss"
-import { Outlet } from "react-router-dom";
-import Footer from "./components/Footer/Footer"
-import Header from "./components/Header/Header"
+import './App.scss';
+import { Outlet, useLocation } from 'react-router-dom';
+import Footer from './components/Footer/Footer';
+import Header from './components/Header/Header';
 
 export default function App() {
+  const location = useLocation();
+  const isProfilePage = location.pathname.startsWith('/profile');
 
   return (
     <div>
       <Header />
       <Outlet />
-      <Footer />
+      {!isProfilePage && <Footer />}
     </div>
-  )
+  );
 }
