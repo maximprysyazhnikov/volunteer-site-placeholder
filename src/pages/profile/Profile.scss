@@ -94,7 +94,7 @@
   &__header {
     display: flex;
     flex-direction: column;
-    gap: 32px;
+    // gap: 32px;
   }
 
   &__header-top {
@@ -132,6 +132,7 @@
     align-items: center;
     gap: 8px;
     cursor: pointer;
+
   }
 
   &__delete-btn {

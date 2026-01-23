@@ -89,18 +89,18 @@ const ProfilePage = () => {
           <div className='profile__card'>
             <div className='profile__header'>
               <div className='profile__header-top'>
-                <div className='profile__avatar'>
+                {/* <div className='profile__avatar'>
                   <img src={profileFoto} alt='Profile avatar' />
-                </div>
-
+                </div> */}
+{/* 
                 <div className='profile__header-actions'>
                   <button className='profile__upload-btn'>
                     <img src={uploadIcon} alt='' />
                     <span>Upload new image</span>
                   </button>
 
-                  <button className='profile__delete-btn' />
-                </div>
+                  <button className='profile__delete-btn'/>
+                </div> */}
               </div>
 
               <h1 className='profile__title'>Profile</h1>
