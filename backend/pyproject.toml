@@ -1,0 +1,16 @@
+[tool.ruff]
+line-length = 88
+target-version = "py310"
+exclude = ["migrations", ".venv"]
+
+[tool.ruff.lint]
+select = [
+    "E",   # pycodestyle
+    "F",   # pyflakes
+    "I",   # import sorting
+    "B",   # bugbear
+    "C90", # complexity
+]
+ignore = [
+    "E501",  # handled by formatter
+]
