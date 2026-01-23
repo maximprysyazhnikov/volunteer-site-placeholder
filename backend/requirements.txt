@@ -17,3 +17,4 @@ sqlparse==0.5.5
 uritemplate==4.2.0
 gunicorn
 psycopg2-binary
+djangorestframework-simplejwt
