@@ -1,92 +1,106 @@
+import { useTranslation } from "react-i18next";
 import "./HomePage.scss"
 
 export default function HomePage() {
+  const { t } = useTranslation();
   return (
     <div className="home__page">
       <div className="home">
 
         <div className="home__main">
           <div className="home__main__title">
-            Find or provide humanitarian <br/> help — fast and safely
+            {t("main-title")}
           </div>
 
           <div className="home__main__p">
-            A volunteer coordination platform that connects people in need with verified 
-            volunteers <br/> in one transparent system
+            {t("main-p")}
           </div>
         </div>
 
         <div className="home__buttons">
-          <div className="home__buttons__button button1">See Who Needs Help</div>
-          <div className="home__buttons__button button2">See Available Help</div>
+          <div className="home__buttons__button button1">{t("nav-button-1")}</div>
+          <div className="home__buttons__button button2">{t("nav-button-2")}</div>
         </div>
       </div>
 
       <div className="home-instructions">
 
         <div className="home-instructions__main">
-          <div className="home-instructions__main__title">How It Works</div>
+          <div className="home-instructions__main__title">{t("instructions__title")}</div>
 
-          <div className="home-instructions__main__p">Humanitarian help coordination step by step</div>
+          <div className="home-instructions__main__p">{t("instructions__p")}</div>
         </div>
 
         <div className="home-instructions__blocks">
 
           <div className="home-instructions__blocks__block">
-            <div className="home-instructions__blocks__block__title">Create a Request or Offer Help</div>
+            <div className="home-instructions__blocks__block__title">{t("instructions-1st-block-title")}</div>
 
             <div className="home-instructions__blocks__block__p">
-              Submit a request for humanitarian help or offer volunteer support in minutes
+              {t("instructions-1st-block-p")}
             </div>
           </div>
 
           <div className="home-instructions__blocks__block">
-            <div className="home-instructions__blocks__block__title">Review & Match</div>
+            <div className="home-instructions__blocks__block__title">{t("instructions-2nd-block-title")}</div>
 
             <div className="home-instructions__blocks__block__p">
-              Volunteers review requests and choose how they can help
+              {t("instructions-2nd-block-p")}
             </div>
           </div>
 
           <div className="home-instructions__blocks__block">
-            <div className="home-instructions__blocks__block__title">Coordinate Safely</div>
+            <div className="home-instructions__blocks__block__title">{t("instructions-3rd-block-title")}</div>
 
             <div className="home-instructions__blocks__block__p">
-              Communicate details and track request status in one place
+              {t("instructions-3rd-block-p")}
             </div>
           </div>
 
           <div className="home-instructions__blocks__block">
-            <div className="home-instructions__blocks__block__title">Deliver Help</div>
+            <div className="home-instructions__blocks__block__title">{t("instructions-4th-block-title")}</div>
 
             <div className="home-instructions__blocks__block__p">
-              Help is delivered with clear updates for everyone involved
+              {t("instructions-4th-block-p")}
             </div>
           </div>
         </div>
       </div>
 
       <div className="home-description">
-        <p className="home-description__title">Who is Wings of Help for</p>
+        <p className="home-description__title">{t("description__title")}</p>
 
         <div className="home-description__blocks">
 
           <div className="home-description__blocks__block">
-            <div className="home-description__blocks__block__title">People who need help</div>
+            <div className="home-description__blocks__block__title">{t("description-1st-block-title")}</div>
 
-            <div className="home-description__blocks__block__p">
-              Find trusted assistance <br/>
-              Track request status <br/>
-              Avoid unverified offers
+            <div className="home-description__blocks__block__paragraphs">
+              <p className="home-description__blocks__block__paragraphs__p">
+                {t("description-1st-block-1st-p")}
+              </p>
+              <p className="home-description__blocks__block__paragraphs__p">
+                {t("description-1st-block-2nd-p")}
+              </p>
+              <p className="home-description__blocks__block__paragraphs__p">
+                {t("description-1st-block-3rd-p")}
+              </p>
             </div>
           </div>
 
           <div className="home-description__blocks__block">
-            <div className="home-description__blocks__block__title">Volunteers & Organizations</div>
+            <div className="home-description__blocks__block__title">{t("description-2nd-block-title")}</div>
 
-            <div className="home-description__blocks__block__p">
-              Find real requests <br/>
-              Coordinate help
+            <div className="home-description__blocks__block__paragraphs">
+              <p className="home-description__blocks__block__paragraphs__p">
+                {t("description-2nd-block-1st-p")}
+              </p>
+              <p className="home-description__blocks__block__paragraphs__p">
+                {t("description-2nd-block-2nd-p")}
+              </p>
+              <p className="home-description__blocks__block__paragraphs__p">
+                {t("description-2nd-block-3rd-p")}
+              </p>
             </div>
           </div>
         </div>
@@ -96,11 +110,15 @@ export default function HomePage() {
 
         <div className="home-active-requests__main">
           
-          <div className="home-active-requests__main__title">Active Requests</div>
+          <div className="home-active-requests__main__title">{t("active-requests-title")}</div>
 
-          <div className="home-active-requests__main__p">
-            Browse verified requests from people and organizations who need support right now. <br/>
-            Every response matters.
+          <div className="home-active-requests__main__paragraphs">
+            <p className="home-active-requests__main__paragraphs__p">
+              {t("active-requests-1st-p")}
+            </p>
+            <p className="home-active-requests__main__paragraphs__p">
+              {t("active-requests-2nd-p")}
+            </p>
           </div>
         </div>
 
@@ -110,19 +128,33 @@ export default function HomePage() {
             <div className="home-active-requests__blocks__block__photo"></div>
 
             <div className="home-active-requests__blocks__block__title">
-              Food & Hygiene Supplies Needed for IDP Family
+              {t("active-requests-1st-block-title")}
             </div>
 
             <div className="home-active-requests__blocks__block__p">
-              Two elderly people need transportation
-              from Kharkiv to Poltava. Limited mobility,
-              minimal luggage. Evacuation required
-              within 24 hours.
+              {t("active-requests-1st-block-p")}
             </div>
 
             <div className="home-active-requests__blocks__block__bottom">
-              <p className="home-active-requests__blocks__block__bottom__city">Lviv</p>
-              <p className="home-active-requests__blocks__block__bottom__category">Logistics</p>
+              <p className="home-active-requests__blocks__block__bottom__city">{t("Kharkiv-city")}</p>
+              <p className="home-active-requests__blocks__block__bottom__category">{t("Logistics")}</p>
+            </div>
+          </div>
+          
+          <div className="home-active-requests__blocks__block">
+            <div className="home-active-requests__blocks__block__photo"></div>
+
+            <div className="home-active-requests__blocks__block__title">
+              {t("active-requests-1st-block-title")}
+            </div>
+
+            <div className="home-active-requests__blocks__block__p">
+              {t("active-requests-1st-block-p")}
+            </div>
+
+            <div className="home-active-requests__blocks__block__bottom">
+              <p className="home-active-requests__blocks__block__bottom__city">{t("Kharkiv-city")}</p>
+              <p className="home-active-requests__blocks__block__bottom__category">{t("Logistics")}</p>
             </div>
           </div>
 
@@ -130,46 +162,25 @@ export default function HomePage() {
             <div className="home-active-requests__blocks__block__photo"></div>
 
             <div className="home-active-requests__blocks__block__title">
-              Food & Hygiene Supplies Needed for IDP Family
+              {t("active-requests-1st-block-title")}
             </div>
 
             <div className="home-active-requests__blocks__block__p">
-              Two elderly people need transportation
-              from Kharkiv to Poltava. Limited mobility,
-              minimal luggage. Evacuation required
-              within 24 hours.
+              {t("active-requests-1st-block-p")}
             </div>
 
             <div className="home-active-requests__blocks__block__bottom">
-              <p className="home-active-requests__blocks__block__bottom__city">Lviv</p>
-              <p className="home-active-requests__blocks__block__bottom__category">Logistics</p>
+              <p className="home-active-requests__blocks__block__bottom__city">{t("Kharkiv-city")}</p>
+              <p className="home-active-requests__blocks__block__bottom__category">{t("Logistics")}</p>
             </div>
           </div>
 
-          <div className="home-active-requests__blocks__block">
-            <div className="home-active-requests__blocks__block__photo"></div>
-
-            <div className="home-active-requests__blocks__block__title">
-              Food & Hygiene Supplies Needed for IDP Family
-            </div>
-
-            <div className="home-active-requests__blocks__block__p">
-              Two elderly people need transportation
-              from Kharkiv to Poltava. Limited mobility,
-              minimal luggage. Evacuation required
-              within 24 hours.
-            </div>
-
-            <div className="home-active-requests__blocks__block__bottom">
-              <p className="home-active-requests__blocks__block__bottom__city">Lviv</p>
-              <p className="home-active-requests__blocks__block__bottom__category">Logistics</p>
-            </div>
-          </div>
+          
           
         </div>
 
         <div className="home-active-requests__see-all">
-          <p className="home-active-requests__see-all__p">See All Requests</p>
+          <p className="home-active-requests__see-all__p">{t("see-all")}</p>
           <img 
             src="/images/ui/ph_arrow-right-light.png" 
             alt="arrow-right-button" 
