@@ -51,6 +51,12 @@ class HelpViewSet(ModelViewSet):
                 status=status.HTTP_400_BAD_REQUEST,
             )
 
+        if help_obj.status == Help.Status.DONE:
+            return Response(
+                {"detail": "This help is already done"},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+
         if not user.is_authenticated:
             return Response(
                 {"detail": "Not authenticated"},
