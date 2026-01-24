@@ -20,6 +20,7 @@ class HelpListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Help
         fields = [
+            "id",
             "title",
             "location",
             "description",
@@ -80,6 +81,7 @@ class HelpRetrieveSerializer(HelpListSerializer):
     class Meta:
         model = Help
         fields = [
+            "id",
             "title",
             "location",
             "description",
@@ -104,3 +106,15 @@ class HelpRetrieveSerializer(HelpListSerializer):
             "counterpart",
             "kind",
         ]
+
+
+class HelpRespondSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Help
+        fields = ()
+
+
+class HelpCompleteSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Help
+        fields = ()
