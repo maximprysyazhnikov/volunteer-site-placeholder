@@ -1,0 +1,101 @@
+@use '../../styles/variables' as *;
+
+.user-request-card {
+  max-height: 402px;
+  max-width: 704px;
+  background: $color-input-bg;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+
+  &__header {
+    display: flex;
+    height: 38px;
+    justify-content: space-between;
+    align-items: stretch;
+    margin-bottom: 16px;
+  }
+
+  &__city {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 18px;
+    font-weight: 400;
+    color: $color-black;
+  }
+
+  &__category {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 162px;
+    background: $color-gray-dark;
+    color: $color-white;
+    padding: 4px 8px;
+    font-size: 18px;
+    font-weight: 400;
+    border-radius: 2px;
+  }
+
+  &__title {
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 125%;
+    color: $color-black;
+    margin-bottom: 24px;
+  }
+
+  &__description {
+    font-size: 18px;
+    line-height: 1.4;
+
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+
+    line-clamp: 4;
+    overflow: hidden;
+  }
+
+  &__status {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 16px;
+    color: $color-black;
+    margin-top: 24px;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 24px;
+  }
+
+  &__edit {
+    flex: 1;
+    border: 1px solid $color-black;
+    background: transparent;
+    padding: 16px;
+    font-size: 18px;
+    line-height: 1.4;
+    font-weight: 400;
+    cursor: pointer;
+    color: $color-black;
+  }
+
+  &__view {
+    flex: 1;
+    background: $color-black;
+    color: $color-white;
+    font-size: 18px;
+    line-height: 1.4;
+    font-weight: 400;
+    border: none;
+    padding: 16px;
+    cursor: pointer;
+  }
+}

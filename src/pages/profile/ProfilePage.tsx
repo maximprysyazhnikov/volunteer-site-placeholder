@@ -4,9 +4,9 @@ import { useAuth } from '../../context/AuthContext';
 
 import { ProfileLayout } from './ProfileLayout';
 import { ProfileInfo } from './MyProfile/ProfileInfo';
-import { MyRequests } from './MyProfile/MyRequests';
-import { MyResponses } from './MyProfile/MyResponses';
-import { userFromServer } from './mockUser';
+import { MyRequests } from './MyProfile/MyRequests/MyRequests';
+import { MyResponses } from './MyProfile/MyResponses/MyResponses';
+import { userFromServer } from '../../api/user.mock';
 
 export const ProfilePage = () => {
   const [activeTab, setActiveTab] = useState<'info' | 'requests' | 'responses'>(
