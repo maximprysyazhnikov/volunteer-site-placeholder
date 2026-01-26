@@ -15,7 +15,7 @@ import SignUpStep1 from './pages/auth/signup/SignUpStep1';
 import SignUpStep2 from './pages/auth/signup/SignUpStep2';
 import SignUpStep3 from './pages/auth/signup/SignUpStep3';
 import SignUpStep4 from './pages/auth/signup/SignUpStep4';
-import ProfilePage from './pages/profile/ProfilePage';
+import { ProfilePage } from './pages/profile/ProfilePage';
 
 import { AuthProvider } from './context/AuthContext';
 

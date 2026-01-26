@@ -3,14 +3,16 @@ import {
   isEmailValid,
   isPhoneValid,
   formatPhone,
-} from '../.../../../utils/validators';
+} from '../../../utils/validators';
 
+import '../../auth/AuthLayout.scss';
 import './ProfileModal.scss';
-import crossIcon from '../../assets/cross.svg';
-import arrowLeftIcon from '../../assets/ep_arrow-left.svg';
-import uaFlag from '../../assets/flag-ukraine.svg';
-import eyeOpen from '../../assets/eye-open.svg';
-import eyeClosed from '../../assets/eye-closed.svg';
+
+import crossIcon from '../../../assets/cross.svg';
+import arrowLeftIcon from '../../../assets/ep_arrow-left.svg';
+import uaFlag from '../../../assets/flag-ukraine.svg';
+import eyeOpen from '../../../assets/eye-open.svg';
+import eyeClosed from '../../../assets/eye-closed.svg';
 
 type ModalType = 'email' | 'phone' | 'password';
 
