@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import "./LangChanger.scss"
-import { useTranslation } from "react-i18next"
+import './LangChanger.scss';
+import { useTranslation } from 'react-i18next';
+// import arrowDown from '../../assets/arrow-down.svg';
 
 export const LangChanger = () => {
   const [open, setOpen] = useState(false);
@@ -14,29 +15,35 @@ export const LangChanger = () => {
   };
 
   return (
-    <div className="lang-dropdown">
+    <div className='lang-dropdown'>
       <button
-        className="header__nav__buttons__button lang-changer"
-        onClick={() => setOpen(prev => !prev)}
+        className='header__nav__buttons__button lang-changer'
+        onClick={() => setOpen((prev) => !prev)}
       >
         {lang}
 
-        <img className="arrow" src="/images/ui/ep_arrow-down.png" alt="dropdown" />
+        <img className="arrow" src="public/images/ui/ep_arrow-down.png" alt="dropdown" />
       </button>
 
       {open && (
-        <div className="lang-dropdown__menu">
-          <div className='lang-dropdown__menu-item' onClick={() => {
-            selectLang('EN');
-            i18n.changeLanguage("en");
-          }}>
+        <div className='lang-dropdown__menu'>
+          <div
+            className='lang-dropdown__menu-item'
+            onClick={() => {
+              selectLang('EN');
+              i18n.changeLanguage('en');
+            }}
+          >
             EN
           </div>
 
-          <div className='lang-dropdown__menu-item' onClick={() => {
-            selectLang('UK');
-            i18n.changeLanguage("uk");
-            }}>
+          <div
+            className='lang-dropdown__menu-item'
+            onClick={() => {
+              selectLang('UK');
+              i18n.changeLanguage('uk');
+            }}
+          >
             UK
           </div>
         </div>

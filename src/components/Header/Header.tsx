@@ -1,34 +1,63 @@
-import { useTranslation } from "react-i18next";
-import { LangChanger } from "../LangChanger/LangChanger"
-import "./Header.scss"
+import { useTranslation } from 'react-i18next';
+import { LangChanger } from '../LangChanger/LangChanger';
+import { Link } from 'react-router-dom';
+import logo from '../../assets/header_logo_image.svg';
+import { useAuth } from '../../context/AuthContext';
+import profileIcon from '../../assets/profile.svg';
+
+import './Header.scss';
 
 export default function Header() {
   const { t } = useTranslation();
+  const { isAuth} = useAuth();
+  console.log('HEADER: render, isAuth =', isAuth);
+
   return (
     <header className='header'>
-      <nav className="header__nav">
-
-        <div className='header__nav__wings-sector'>
-          <img src="/images/ui/Header-Logo-Image.png" alt="header-logo" />
-          <p className="header__nav__wings-sector__title">Wings of help</p>
-        </div>
+      <nav className='header__nav'>
+        <Link to='/' className='header__nav__wings-sector header__nav__brand'>
+          <img src={logo} alt='header-logo' />
+          <p className='header__nav__wings-sector__title'>Wings of help</p>
+        </Link>
 
         <div className='header__nav__pages'>
-          <div className="header__nav__pages__page">
-            <p className="header__nav__pages__page__title">{t("Requests")}</p>
+          <div className='header__nav__pages__page'>
+            <p className='header__nav__pages__page__title'>{t('Requests')}</p>
           </div>
-          <div className="header__nav__pages__page">
-            <p className="header__nav__pages__page__title">{t("Offers")}</p>
+          <div className='header__nav__pages__page'>
+            <p className='header__nav__pages__page__title'>{t('Offers')}</p>
           </div>
         </div>
 
         <div className='header__nav__buttons'>
           <LangChanger />
-          <button className="header__nav__buttons__button sign-in">{t("Sign-in")}</button>
-          <button className="header__nav__buttons__button sign-up">{t("Sign-up")}</button>
+
+          {!isAuth ? (
+            <>
+              <Link to='/signin'>
+                <button className='header__nav__buttons__button sign-in'>
+                  {t('Sign-in')}
+                </button>
+              </Link>
+
+              <Link to='/signup/step-1'>
+                <button className='header__nav__buttons__button sign-up'>
+                  {t('Sign-up')}
+                </button>
+              </Link>
+            </>
+          ) : (
+            <>
+              <Link to='/profile'>
+                <button className='header__nav__buttons__button header__profile-btn'>
+                  <img src={profileIcon} alt='' />
+                  {t('My profile')}
+                </button>
+              </Link>
+            </>
+          )}
         </div>
-        
       </nav>
     </header>
-  )
+  );
 }

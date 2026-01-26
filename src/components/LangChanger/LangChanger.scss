@@ -6,6 +6,7 @@
     display: flex;
     flex-direction: column;
     gap: 1px;
+    margin-top: 1px;
     
     &-item {
       display: flex;
@@ -20,7 +21,6 @@
 
 .lang-changer {
   padding: 0;
-  background-color: #F1F1F4;
   border: none;
   font-weight: 500;
   font-size: 18px;
