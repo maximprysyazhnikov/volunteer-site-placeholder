@@ -1,5 +1,7 @@
 import { useTranslation } from "react-i18next";
 import "./HomePage.scss"
+import RequestCart from "../../components/RequestCart/RequestCart";
+import ActiveRequests from "../../components/ActiveRequests/ActiveRequests";
 
 export default function HomePage() {
   const { t } = useTranslation();
@@ -122,62 +124,7 @@ export default function HomePage() {
           </div>
         </div>
 
-        <div className="home-active-requests__blocks">
-
-          <div className="home-active-requests__blocks__block">
-            <div className="home-active-requests__blocks__block__photo"></div>
-
-            <div className="home-active-requests__blocks__block__title">
-              {t("active-requests-1st-block-title")}
-            </div>
-
-            <div className="home-active-requests__blocks__block__p">
-              {t("active-requests-1st-block-p")}
-            </div>
-
-            <div className="home-active-requests__blocks__block__bottom">
-              <p className="home-active-requests__blocks__block__bottom__city">{t("Kharkiv-city")}</p>
-              <p className="home-active-requests__blocks__block__bottom__category">{t("Logistics")}</p>
-            </div>
-          </div>
-          
-          <div className="home-active-requests__blocks__block">
-            <div className="home-active-requests__blocks__block__photo"></div>
-
-            <div className="home-active-requests__blocks__block__title">
-              {t("active-requests-1st-block-title")}
-            </div>
-
-            <div className="home-active-requests__blocks__block__p">
-              {t("active-requests-1st-block-p")}
-            </div>
-
-            <div className="home-active-requests__blocks__block__bottom">
-              <p className="home-active-requests__blocks__block__bottom__city">{t("Kharkiv-city")}</p>
-              <p className="home-active-requests__blocks__block__bottom__category">{t("Logistics")}</p>
-            </div>
-          </div>
-
-          <div className="home-active-requests__blocks__block">
-            <div className="home-active-requests__blocks__block__photo"></div>
-
-            <div className="home-active-requests__blocks__block__title">
-              {t("active-requests-1st-block-title")}
-            </div>
-
-            <div className="home-active-requests__blocks__block__p">
-              {t("active-requests-1st-block-p")}
-            </div>
-
-            <div className="home-active-requests__blocks__block__bottom">
-              <p className="home-active-requests__blocks__block__bottom__city">{t("Kharkiv-city")}</p>
-              <p className="home-active-requests__blocks__block__bottom__category">{t("Logistics")}</p>
-            </div>
-          </div>
-
-          
-          
-        </div>
+        <ActiveRequests/>
 
         <div className="home-active-requests__see-all">
           <p className="home-active-requests__see-all__p">{t("see-all")}</p>

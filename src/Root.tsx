@@ -7,7 +7,7 @@ import {
 } from 'react-router-dom';
 
 import App from './App';
-import HomePage from './components/HomePage/HomePage';
+import HomePage from './pages/HomePage/HomePage';
 
 import AuthLayout from './pages/auth/AuthLayout';
 import SignInPage from './pages/auth/signin/SignInPage';
@@ -27,6 +27,9 @@ export const Root = () => (
           <Route path='/' element={<App />}>
             <Route index element={<HomePage />} />
             <Route path='profile' element={<ProfilePage />} />
+            <Route path='requests' element={<ProfilePage />} />
+            <Route path='offers' element={<ProfilePage />} />
+
             <Route path='home' element={<Navigate to='/' replace />} />
           </Route>
 
