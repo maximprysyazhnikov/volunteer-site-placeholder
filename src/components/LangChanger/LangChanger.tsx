@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './LangChanger.scss';
 import { useTranslation } from 'react-i18next';
-import arrowDown from '../../assets/arrow-down.svg';
+// import arrowDown from '../../assets/arrow-down.svg';
 
 export const LangChanger = () => {
   const [open, setOpen] = useState(false);
@@ -22,7 +22,7 @@ export const LangChanger = () => {
       >
         {lang}
 
-        <img className='arrow' src={arrowDown} alt='dropdown' />
+        <img className="arrow" src="public/images/ui/ep_arrow-down.png" alt="dropdown" />
       </button>
 
       {open && (

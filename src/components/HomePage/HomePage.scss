@@ -23,6 +23,7 @@
     align-items: center;
     flex-direction: column;
     gap: 16px;
+    max-width: 807px;
 
     &__title {
       font-weight: 500;
@@ -54,7 +55,9 @@
       justify-content: center;
       align-items: center;
       min-height: 57px;
-      min-width: 207px
+      padding: 16px;
+      min-width: 207px;
+      box-sizing: border-box;
     }
   }
 }
@@ -105,12 +108,12 @@
       background-color: #F1F1F4;
       justify-content: space-between;
       align-items: center;
-      gap: 80px;
       width: 288px;
       height: 288px;
+      padding: 24px;
+      box-sizing: border-box; // ask sofia if need to change 
 
       &__title {
-        margin-top: 24px;
         font-weight: 500;
         font-style: Medium;
         font-size: 24px;
@@ -127,7 +130,6 @@
         line-height: 140%;
 
         width: 240px;
-        height: 100px;
       }
     }
   }
@@ -168,11 +170,16 @@
         line-height: 125%;
       }
 
-      &__p {
-        font-weight: 400;
-        font-style: Regular;
-        font-size: 18px;
-        line-height: 140%;
+      &__paragraphs {
+        display: flex;
+        flex-direction: column;
+        &__p {
+          margin: 0;
+          font-weight: 400;
+          font-style: Regular;
+          font-size: 18px;
+          line-height: 140%;
+        }
       }
     }
   }
@@ -198,11 +205,16 @@
       line-height: 125%;
     }
 
-    &__p {
-      font-weight: 400;
-      font-style: Regular;
-      font-size: 18px;
-      line-height: 140%;
+    &__paragraphs {
+      display: flex;
+      flex-direction: column;
+      &__p {
+        margin: 0;
+        font-weight: 400;
+        font-style: Regular;
+        font-size: 18px;
+        line-height: 140%;
+      }
     }
   }
 
