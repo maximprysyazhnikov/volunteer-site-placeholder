@@ -31,6 +31,14 @@
     color: $color-black;
   }
 
+  &__subtitle-hint {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.35;
+    color: $color-gray-main;
+    margin-bottom: 16px;
+  }
+
   &__close {
     width: 40px;
     height: 40px;
@@ -66,6 +74,50 @@
   &__label {
     font-size: 16px;
     color: $color-black;
+    line-height: 1.4;
+  }
+
+  &__phone {
+    display: flex;
+    height: 56px;
+    border: 1px solid $color-gray-border;
+  }
+
+  &__phone-input {
+    flex: 1;
+    border: none;
+    padding: 0 8px;
+    font-size: 18px;
+    outline: none;
+
+    &::placeholder {
+      color: $color-gray-main;
+      font-size: 18px;
+    }
+  }
+
+  &__phone-input.modal__input--error {
+    border: none;
+  }
+
+  &__phone.modal__input--error {
+    border-color: $color-error;
+  }
+
+  &__country {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0 16px;
+    background: $color-gray-bg;
+    border-right: 1px solid $color-gray-border;
+
+    span {
+      font-size: 18px;
+      font-family: $font-main;
+      line-height: 1.4;
+      color: $color-black;
+    }
   }
 
   &__error {
@@ -103,5 +155,96 @@
     &--active {
       background: $color-black;
     }
+  }
+
+  &__subtitle {
+    font-size: 16px;
+    line-height: 1.35;
+    color: $color-black;
+    margin-bottom: 24px;
+
+    strong {
+      font-weight: 700;
+    }
+  }
+
+  &__back {
+    width: 24px;
+    height: 24px;
+    margin-bottom: 24px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__code-label {
+    font-size: 16px;
+    line-height: 1.2;
+    margin-bottom: 8px;
+    color: $color-black;
+  }
+
+  &__code-row {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-bottom: 32px;
+  }
+
+  &__code-separator {
+    width: 24px;
+    height: 1px;
+    background: $color-gray-main;
+    align-self: center;
+    flex-shrink: 0;
+  }
+
+  &__code-input {
+    width: 84px;
+    height: 56px;
+    border-radius: 40px;
+    background: $color-input-bg;
+    border: 1px solid transparent;
+    text-align: center;
+    font-size: 18px;
+    outline: none;
+    color: $color-black;
+
+    &:focus {
+      background: $color-white;
+      border-color: $color-black;
+    }
+  }
+
+  &__resend {
+    margin-top: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    font-size: 16px;
+    color: $color-gray-main;
+  }
+
+  &__resend-link {
+    background: transparent;
+    border: none;
+    padding: 0;
+    font-size: 16px;
+    font-weight: 500;
+    color: $color-black;
+    cursor: pointer;
+  }
+
+  &__password-group {
+    margin-bottom: 32px;
+  }
+  
+  &__actions {
+    margin-top: 32px;
   }
 }
