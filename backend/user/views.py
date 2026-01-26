@@ -17,6 +17,7 @@ from .serializers import (
     CustomTokenObtainPairSerializer,
     RegisterSerializer,
     UserRetrieveSerializer,
+    AdminRegisterSerializer
 )
 from .utils import generate_reset_code
 
@@ -36,6 +37,24 @@ class RegisterView(APIView):
         return Response(
             {
                 "message": "User registered successfully",
+                "id": user.id,
+                "email": user.email,
+                "role": user.role,
+            },
+            status=status.HTTP_201_CREATED,
+        )
+
+class AdminRegisterView(APIView):
+    permission_classes = [AllowAny]
+
+    def post(self, request):
+        serializer = AdminRegisterSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        user = serializer.save()
+
+        return Response(
+            {
+                "message": "Admin user created successfully",
                 "id": user.id,
                 "email": user.email,
                 "role": user.role,
