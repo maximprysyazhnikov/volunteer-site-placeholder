@@ -2,11 +2,12 @@ from django.urls import path, include
 
 from .views import ping
 
-from .views import HelpCategoryViewSet
+from .views import HelpCategoryViewSet, HelpViewSet
 from rest_framework import routers
 
 router = routers.DefaultRouter()
 router.register('help-category', HelpCategoryViewSet)
+router.register('help', HelpViewSet)
 
 urlpatterns = [
     path("ping/", ping),

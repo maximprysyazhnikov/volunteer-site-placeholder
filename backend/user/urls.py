@@ -1,7 +1,7 @@
 from django.urls import include, path
 from rest_framework.routers import DefaultRouter
 
-from user.views import UserViewSet, confirm_password_reset, request_password_reset
+from user.views import UserViewSet, confirm_password_reset, request_password_reset, AdminRegisterView
 
 from .views import RegisterView
 
@@ -12,5 +12,6 @@ urlpatterns = [
     path("user/register/", RegisterView.as_view(), name="register"),
     path("user/password-reset/request/", request_password_reset, name="password_reset_request"),
     path("user/password-reset/confirm/", confirm_password_reset),
+    path("user/register/admin/",AdminRegisterView.as_view() , name="admin-register"),
     path("", include(router.urls)),
 ]
