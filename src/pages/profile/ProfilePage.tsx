@@ -210,7 +210,18 @@ const ProfilePage = () => {
       </div>
 
       {activeModal && (
-        <ProfileModal type={activeModal} onClose={() => setActiveModal(null)} />
+        <ProfileModal
+          type={activeModal}
+          onClose={() => setActiveModal(null)}
+          onSuccess={(newValue) => {
+            if (activeModal === 'email') {
+              setForm((prev) => ({ ...prev, email: newValue }));
+            }
+            if (activeModal === 'phone') {
+              setForm((prev) => ({ ...prev, phone: newValue }));
+            }
+          }}
+        />
       )}
     </div>
   );

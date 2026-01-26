@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import SignUpForm from './SignUpForm';
+import { isPasswordValid } from '../../../utils/validators';
 
 import eyeOpen from '../../../assets/eye-open.svg';
 import eyeClosed from '../../../assets/eye-closed.svg';
@@ -16,7 +17,7 @@ const SignUpStep4 = () => {
 
   const isMinLength = password.length >= 8;
   const isMatch = password === confirm;
-  const isValid = isMinLength && isMatch && agree;
+  const isValid = isPasswordValid(password, confirm) && agree;
 
   const handleSubmit = () => {
     if (!isValid) return;
@@ -67,7 +68,7 @@ const SignUpStep4 = () => {
             className={`auth-form__input ${confirm && !isMatch ? 'auth-form__input--error' : ''}`}
             type={showPassword ? 'text' : 'password'}
             value={confirm}
-             placeholder='Confirm your password'
+            placeholder='Confirm your password'
             onChange={(e) => setConfirm(e.target.value)}
           />
           <img

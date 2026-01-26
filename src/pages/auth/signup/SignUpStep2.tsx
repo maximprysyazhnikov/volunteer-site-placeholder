@@ -2,43 +2,32 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import SignUpForm from './SignUpForm';
 import uaFlag from '../../../assets/flag-ukraine.svg';
-import { isEmailValid } from '../../../utils/validators';
-
+import {
+  isEmailValid,
+  isPhoneValid,
+  formatPhone,
+} from '../../../utils/validators';
 
 const SignUpStep2 = () => {
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [emailError, setEmailError] = useState(false);
-  const navigate = useNavigate();
+  const [phoneError, setPhoneError] = useState(false);
 
-  const isEmailValidValue = isEmailValid(email);
-  const isPhoneValid = phone.replace(/\D/g, '').length === 9;
+  const navigate = useNavigate();
 
   const isFilled = Boolean(email && phone);
 
   const handleContinue = () => {
-    if (!isEmailValidValue) {
-      setEmailError(true);
-      return;
-    }
+    const emailOk = isEmailValid(email);
+    const phoneOk = isPhoneValid(phone);
 
-    if (!isPhoneValid) {
-      return;
-    }
+    setEmailError(!emailOk);
+    setPhoneError(!phoneOk);
+
+    if (!emailOk || !phoneOk) return;
+
     navigate('/signup/step-3');
-  };
-
-  const formatPhone = (value: string) => {
-    const digits = value.replace(/\D/g, '').slice(0, 9);
-
-    const parts = [
-      digits.slice(0, 2),
-      digits.slice(2, 5),
-      digits.slice(5, 7),
-      digits.slice(7, 9),
-    ].filter(Boolean);
-
-    return parts.join('-');
   };
 
   return (
@@ -62,9 +51,15 @@ const SignUpStep2 = () => {
           }}
         />
       </label>
+      
+      <label className='auth-form__label auth-form__label--with-error'>
+        <span className='auth-form__label-row'>
+          <span className='auth-form__label-text'>Phone number</span>
+          {phoneError && (
+            <span className='auth-form__error'>Enter full phone number</span>
+          )}
+        </span>
 
-      <label className='auth-form__label'>
-        <span className='auth-form__label-text'>Phone number</span>
         <div className='auth-form__phone'>
           <div className='auth-form__country'>
             <img src={uaFlag} alt='UA' />
@@ -72,14 +67,18 @@ const SignUpStep2 = () => {
           </div>
 
           <input
-            className='auth-form__phone-input'
+            className={`auth-form__phone-input ${phoneError ? 'auth-form__input--error' : ''}`}
             type='tel'
             placeholder='12-345-67-89'
             maxLength={12}
             value={phone}
-            onChange={(e) => setPhone(formatPhone(e.target.value))}
+            onChange={(e) => {
+              setPhone(formatPhone(e.target.value));
+              setPhoneError(false);
+            }}
           />
         </div>
+
         <span className='auth-form__hint'>
           Used only for volunteering coordination
         </span>
