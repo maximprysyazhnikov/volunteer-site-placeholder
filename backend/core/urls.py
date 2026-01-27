@@ -6,7 +6,6 @@ from drf_spectacular.views import (
     SpectacularRedocView,
     SpectacularSwaggerView,
 )
-from rest_framework_simplejwt.views import TokenRefreshView
 
 from user.views import CustomTokenObtainPairView, CustomTokenRefreshView
 

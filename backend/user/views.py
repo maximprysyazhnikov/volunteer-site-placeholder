@@ -3,33 +3,31 @@ from datetime import timedelta
 from django.contrib.auth.password_validation import validate_password
 from django.core.mail import send_mail
 from django.utils import timezone
+from drf_spectacular.utils import (
+    OpenApiExample,
+    OpenApiResponse,
+    extend_schema,
+)
 from rest_framework import status, viewsets
 from rest_framework.decorators import api_view
 from rest_framework.exceptions import ValidationError
+from rest_framework.generics import GenericAPIView
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
-from rest_framework.generics import GenericAPIView
-
-from drf_spectacular.utils import (
-    extend_schema,
-    OpenApiExample,
-    OpenApiResponse,
-)
 
 from .models import PasswordResetCode, User
 from .permissions import UserAccessPermission
 from .serializers import (
-    CustomTokenObtainPairSerializer,
-    RegisterSerializer,
-    UserRetrieveSerializer,
     AdminRegisterSerializer,
+    CustomTokenObtainPairSerializer,
     PasswordResetConfirmSerializer,
     PasswordResetRequestSerializer,
+    RegisterSerializer,
+    UserRetrieveSerializer,
 )
 from .utils import generate_reset_code
-
 
 
 class CustomTokenRefreshView(TokenRefreshView):
