@@ -70,7 +70,11 @@ class AdminRegisterSerializer(RegisterSerializer):
     secret_code = serializers.CharField(write_only=True, required=True)
 
     class Meta(RegisterSerializer.Meta):
-        fields = RegisterSerializer.Meta.fields + ["secret_code"]
+        fields = [
+            field
+            for field in RegisterSerializer.Meta.fields
+            if field != "role"
+        ] + ["secret_code"]
 
     def validate_secret_code(self, value):
         if value != settings.ADMIN_SECRET_CODE:
@@ -90,3 +94,13 @@ class AdminRegisterSerializer(RegisterSerializer):
         user.save(update_fields=["is_staff", "is_superuser"])
 
         return user
+
+
+class PasswordResetRequestSerializer(serializers.Serializer):
+    email = serializers.EmailField()
+
+
+class PasswordResetConfirmSerializer(serializers.Serializer):
+    email = serializers.EmailField()
+    code = serializers.CharField()
+    new_password = serializers.CharField()
