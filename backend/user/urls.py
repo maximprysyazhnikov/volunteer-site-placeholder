@@ -1,7 +1,12 @@
 from django.urls import include, path
 from rest_framework.routers import DefaultRouter
 
-from user.views import UserViewSet, confirm_password_reset, request_password_reset, AdminRegisterView
+from user.views import (
+    AdminRegisterView,
+    UserViewSet,
+    confirm_password_reset,
+    request_password_reset,
+)
 
 from .views import RegisterView
 
