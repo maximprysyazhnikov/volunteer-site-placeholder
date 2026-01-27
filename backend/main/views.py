@@ -7,6 +7,7 @@ from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
 
 from main.models import Help, HelpCategory
+from user.models import User
 
 from .permissions import IsAdminOrIsOwner, IsAdminOrReadOnly
 from .serializers import (
@@ -179,13 +180,13 @@ class HelpViewSet(ModelViewSet):
                 status=status.HTTP_403_FORBIDDEN
             )
 
-        if help_obj.kind == Help.Kind.OFFER and user.role == "volunteer":
+        if help_obj.kind == Help.Kind.OFFER and user.role == User.Role.VOLUNTEER:
             return Response(
                 {"detail": "Volunteers cannot respond to offers"},
                 status=status.HTTP_403_FORBIDDEN
             )
 
-        if help_obj.kind == Help.Kind.REQUEST and user.role == "distressed":
+        if help_obj.kind == Help.Kind.REQUEST and user.role == User.Role.DISTRESSED:
             return Response(
                 {"detail": "The Distressed cannot respond to requests"},
                 status=status.HTTP_403_FORBIDDEN
@@ -226,7 +227,7 @@ class HelpViewSet(ModelViewSet):
                 status=status.HTTP_403_FORBIDDEN
             )
 
-        if user != help_obj.creator and user.role != "admin":
+        if user != help_obj.creator and user.role != User.Role.ADMIN:
             return Response(
                 {"detail": "You cannot complete someone else's help"},
                 status=status.HTTP_403_FORBIDDEN

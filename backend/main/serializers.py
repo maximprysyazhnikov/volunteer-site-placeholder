@@ -4,6 +4,7 @@ from rest_framework.exceptions import ValidationError
 from user.serializers import UserRetrieveSerializer
 
 from .models import Help, HelpCategory
+from user.models import User
 
 
 class HelpCategorySerializer(serializers.ModelSerializer):
@@ -53,12 +54,12 @@ class HelpListSerializer(serializers.ModelSerializer):
 
         role = user.role
 
-        if role == "volunteer" and value != Help.Kind.OFFER:
+        if role == User.Role.VOLUNTEER and value != Help.Kind.OFFER:
             raise ValidationError(
                 "Volunteers can create only offers."
             )
 
-        if role == "distressed" and value != Help.Kind.REQUEST:
+        if role == User.Role.DISTRESSED and value != Help.Kind.REQUEST:
             raise ValidationError(
                 "Distressed can create only requests."
             )
