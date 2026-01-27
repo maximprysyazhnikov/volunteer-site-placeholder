@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     'debug_toolbar',
     'rest_framework',
     'drf_spectacular',
+    "django_filters",
 
     #Local
     'main',
@@ -115,12 +116,15 @@ INTERNAL_IPS = [
 AUTH_USER_MODEL = 'user.User'
 
 REST_FRAMEWORK = {
-'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.AllowAny',
     ],
     'DEFAULT_AUTHENTICATION_CLASSES': [
         "rest_framework_simplejwt.authentication.JWTAuthentication",
+    ],
+    "DEFAULT_FILTER_BACKENDS": [
+        "django_filters.rest_framework.DjangoFilterBackend",
     ],
 }
 
