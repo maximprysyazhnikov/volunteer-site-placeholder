@@ -6,9 +6,8 @@ from drf_spectacular.views import (
     SpectacularRedocView,
     SpectacularSwaggerView,
 )
-from rest_framework_simplejwt.views import TokenRefreshView
 
-from user.views import CustomTokenObtainPairView
+from user.views import CustomTokenObtainPairView, CustomTokenRefreshView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -29,7 +28,7 @@ urlpatterns = [
         name='redoc',
     ),
     path("api/v1/user/token/", CustomTokenObtainPairView.as_view(), name="token_obtain_pair"),
-    path("api/v1/user/token/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
+    path("api/v1/user/token/refresh/", CustomTokenRefreshView.as_view(), name="token_refresh"),
     path("api/v1/", include("main.urls")),
     path("api/v1/", include("user.urls")),
 ] + debug_toolbar_urls()
