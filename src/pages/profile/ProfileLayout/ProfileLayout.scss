@@ -13,9 +13,12 @@
 
     display: grid;
     grid-template-columns: 392px minmax(24px, 128px) 1fr;
+
   }
 
   &__content {
     grid-column: 3;
+    min-width: 400px;
+    
   }
 }

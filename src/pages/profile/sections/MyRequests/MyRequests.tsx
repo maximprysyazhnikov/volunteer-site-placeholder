@@ -6,7 +6,11 @@ import plusIcon from '../../../../assets/Plus.svg';
 
 type Tab = 'active' | 'past';
 
-export const MyRequests = () => {
+interface Props {
+  onCreate: () => void;
+}
+
+export const MyRequests = ({ onCreate }: Props) => {
   const [tab, setTab] = useState<Tab>('active');
 
   const filteredRequests = mockRequests.filter((request) =>
@@ -18,7 +22,7 @@ export const MyRequests = () => {
   return (
     <div className='my-requests'>
       <div className='my-requests__header'>
-        <button className='my-requests__create-btn'>
+        <button className='my-requests__create-btn' onClick={onCreate}>
           <img src={plusIcon} alt='' />
           <span>Create New Request</span>
         </button>
