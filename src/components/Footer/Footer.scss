@@ -20,7 +20,7 @@
     &__wings-sector {
       max-width: 207px;
       height: 46px;
-      @include centredFlexBox;
+      @include centeredFlexBox;
       margin-bottom: 16px;
       
       gap: 4px;
@@ -57,12 +57,15 @@
       flex-direction: column;
       gap: 40px;
 
+      
       &__requests {
         @include p-styles;
+        @include disableLinkStyles;
       }
 
       &__offers {
         @include p-styles;
+        @include disableLinkStyles;
       }
     }
 

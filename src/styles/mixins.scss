@@ -1,4 +1,4 @@
-@mixin centredFlexBox {
+@mixin centeredFlexBox {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -16,4 +16,9 @@
   font-style: Medium;
   font-size: 40px;
   line-height: 125%;
+}
+
+@mixin disableLinkStyles {
+  text-decoration: none;
+  color: black;
 }

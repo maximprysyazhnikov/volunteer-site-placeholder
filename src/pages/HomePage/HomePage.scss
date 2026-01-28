@@ -2,7 +2,7 @@
 
 .home__page {
   width: 100%;
-  @include centredFlexBox;
+  @include centeredFlexBox;
   flex-direction: column;
   margin-top: 190px;
   margin-bottom: 120px;
@@ -10,13 +10,13 @@
 }
 
 .home {
-  @include centredFlexBox;
+  @include centeredFlexBox;
   flex-direction: column;
   gap: 80px;
   margin-bottom: 160px;
 
   &__main {
-    @include centredFlexBox;
+    @include centeredFlexBox;
     flex-direction: column;
     gap: 16px;
     max-width: 807px;
@@ -39,11 +39,13 @@
     gap: 24px;
 
     &__button {
-      @include centredFlexBox;
+      @include centeredFlexBox;
       min-height: 57px;
       padding: 16px;
       min-width: 207px;
       box-sizing: border-box;
+
+      text-decoration: none;
     }
   }
 }
@@ -55,13 +57,14 @@
 
 .button2 {
   border: 1px solid #000;
+  color: #000;
 }
 
 .home-instructions {
   display: flex;
   flex-direction: column;
-  gap: 40px;
   max-width: 1224px;
+  gap: 40px;
   
   &__main {
     display: flex;

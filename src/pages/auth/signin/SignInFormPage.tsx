@@ -4,7 +4,7 @@ import eyeClosed from '../../../assets/eye-closed.svg';
 import eyeOpen from '../../../assets/eye-open.svg';
 import { useAuth } from '../../../context/AuthContext';
 
-const SignInForm = () => {
+const SignInFormPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
@@ -106,4 +106,4 @@ const SignInForm = () => {
   );
 };
 
-export default SignInForm;
+export default SignInFormPage;
