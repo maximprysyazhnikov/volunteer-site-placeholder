@@ -1,0 +1,134 @@
+@use '../../../../styles/variables' as *;
+
+.profile {
+  &__card {
+    background: $color-white;
+  }
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__title {
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 1.2;
+    margin-bottom: 24px;
+  }
+
+  &__form {
+    margin-bottom: 40px;
+  }
+
+  &__label {
+    display: block;
+    font-size: 16px;
+    font-weight: 400;
+    padding: 0 16px;
+    line-height: 1.4;
+    color: $color-black;
+    margin-bottom: 4px;
+  }
+
+  &__input {
+    height: $control-height;
+    margin-bottom: 16px;
+    width: 100%;
+    border: 1px solid $color-gray-border;
+    padding: 16px;
+    font-size: 16px;
+    font-family: $font-main;
+    color: $color-black;
+  }
+
+  &__role {
+    height: $control-height;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 40px;
+  }
+
+  &__role-label {
+    font-size: 18px;
+    font-weight: 500;
+  }
+
+  &__role-value {
+    font-size: 18px;
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  &__save-btn {
+    width: 302px;
+    height: $control-height;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: $color-gray-main;
+    color: $color-white;
+    font-size: 18px;
+    border: none;
+
+    &--active {
+      background: $color-black;
+      cursor: pointer;
+    }
+  }
+
+  &__contacts {
+    margin-top: 40px;
+  }
+
+  &__contacts-title {
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 24px;
+    line-height: 1.2;
+  }
+
+  &__contact-row {
+    display: grid;
+    grid-template-columns: 1fr 184px;
+    gap: 24px;
+    align-items: end;
+    margin-bottom: 16px;
+  }
+
+  &__contact-field {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  &__contact-label {
+    font-size: 16px;
+    padding-left: 16px;
+    line-height: 1.2;
+    color: $color-black;
+  }
+
+  &__contact-input {
+    height: $control-height;
+    background: $color-input-bg;
+    border: none;
+    padding: 16px;
+    font-size: 18px;
+    color: $color-placeholder;
+  }
+
+  &__contact-btn {
+    width: 184px;
+    height: $control-height;
+    border: 1px solid $color-black;
+    background: $color-white;
+    font-size: 18px;
+    line-height: 1.2;
+    cursor: pointer;
+  }
+}

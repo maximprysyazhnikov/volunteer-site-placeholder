@@ -2,11 +2,12 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 
-import { ProfileLayout } from './ProfileLayout';
-import { ProfileInfo } from './MyProfile/ProfileInfo';
-import { MyRequests } from './MyProfile/MyRequests/MyRequests';
-import { MyResponses } from './MyProfile/MyResponses/MyResponses';
+import { ProfileLayout } from './ProfileLayout/ProfileLayout';
+import { ProfileInfo } from './sections/ProfileInfo/ProfileInfo';
+// import { MyRequests } from './sections/MyRequests/MyRequests';
+import { MyResponses } from './sections/MyResponses/MyResponses';
 import { userFromServer } from '../../api/user.mock';
+import { CreateRequest } from '../../components/CreateRequest/CreateRequest';
 
 export const ProfilePage = () => {
   const [activeTab, setActiveTab] = useState<'info' | 'requests' | 'responses'>(
@@ -29,7 +30,8 @@ export const ProfilePage = () => {
       onLogout={handleLogout}
     >
       {activeTab === 'info' && <ProfileInfo />}
-      {activeTab === 'requests' && <MyRequests />}
+      {/* {activeTab === 'requests' && <MyRequests />} */}
+      {activeTab === 'requests' && <CreateRequest />}
       {activeTab === 'responses' && <MyResponses />}
     </ProfileLayout>
   );

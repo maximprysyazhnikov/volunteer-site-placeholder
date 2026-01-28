@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import '../Profile.scss';
-import { ProfileModal } from '../ProfileModal/ProfileModal';
-import { userFromServer } from '../../../api/user.mock';
+import { ProfileModal } from '../../ProfileModal/ProfileModal';
+import { userFromServer } from '../../../../api/user.mock';
+import './ProfileInfo.scss';
 
 export const ProfileInfo = () => {
   const [originalUser, setOriginalUser] = useState(userFromServer);

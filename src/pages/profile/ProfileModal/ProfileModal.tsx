@@ -62,7 +62,7 @@ export const ProfileModal = ({ type, onClose, onSuccess }: Props) => {
 
   const buttonMap: Record<ModalType, string> = {
     email: 'Verify email',
-    phone: 'Verify phone',
+    phone: 'Save phone number',
     password: 'Verify password',
   };
 
@@ -74,6 +74,12 @@ export const ProfileModal = ({ type, onClose, onSuccess }: Props) => {
 
     if (type === 'phone' && !isPhoneValid(value)) {
       setError(true);
+      return;
+    }
+
+    if (type === 'phone') {
+      onSuccess(`+380 ${value}`);
+      onClose();
       return;
     }
 
@@ -171,7 +177,7 @@ export const ProfileModal = ({ type, onClose, onSuccess }: Props) => {
         </div>
       )}
 
-      {step === 'code' && (
+      {step === 'code' && type !== 'phone' && (
         <div className='modal-overlay' onClick={onClose}>
           <div className='modal' onClick={(e) => e.stopPropagation()}>
             <div className='modal__header'>
@@ -182,8 +188,7 @@ export const ProfileModal = ({ type, onClose, onSuccess }: Props) => {
             </div>
 
             <p className='modal__subtitle'>
-              We’ve sent a verification code to{' '}
-              <strong>{type === 'phone' ? `+380 ${value}` : value}</strong>
+              We’ve sent a verification code to <strong>{value}</strong>
             </p>
 
             <button className='modal__back' onClick={() => setStep('edit')}>
@@ -213,12 +218,13 @@ export const ProfileModal = ({ type, onClose, onSuccess }: Props) => {
               disabled={!isCodeComplete}
               onClick={() => {
                 console.log('Code confirmed:', code.join(''));
+
                 if (type === 'password') {
                   setStep('new-password');
                 } else {
+                  // потім тут буде оновлення даних email
+                  onSuccess(value);
                   onClose();
-                  // потім тут буде оновлення даних користувача
-                  onSuccess(type === 'phone' ? `+380 ${value}` : value);
                 }
               }}
             >
