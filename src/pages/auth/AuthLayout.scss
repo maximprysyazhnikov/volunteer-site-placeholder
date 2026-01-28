@@ -1,5 +1,5 @@
 @use '../../styles/variables' as *;
-@use '../../styles/mixins' as *;
+@use '../../styles/mixins/index' as *;
 
 .auth-layout {
   @include flex-column;
@@ -139,7 +139,7 @@
 
     &--active {
       @include button-primary;
-      
+
     }
   }
 
