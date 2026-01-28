@@ -1,5 +1,5 @@
 @use '../../../styles/variables' as *;
-@use '../../../styles/mixins' as *;
+@use '../../../styles/mixins/index' as *;
 
 .profile {
   padding: 80px 0;

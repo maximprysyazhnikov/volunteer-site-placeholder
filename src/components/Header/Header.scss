@@ -1,4 +1,6 @@
 @use '../../styles/mixins' as *;
+@use '../../styles/mixins/index' as *;
+@use '../../styles/variables' as *;
 
 .header {
   height: 57px;
