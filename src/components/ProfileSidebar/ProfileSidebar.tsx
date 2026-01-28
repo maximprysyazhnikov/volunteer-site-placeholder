@@ -2,7 +2,7 @@ import profileFoto from '../../assets/Profile_foto.svg';
 import infoIcon from '../../assets/profile2.svg';
 import requestsIcon from '../../assets/HandsPraying.svg';
 import responsesIcon from '../../assets/ArrowsClockwise.svg';
-import logoutIcon from '../../assets/logout.svg';
+import logoutIcon from '../../assets/Logout.svg';
 import './ProfileSidebar.scss';
 
 interface Props {
