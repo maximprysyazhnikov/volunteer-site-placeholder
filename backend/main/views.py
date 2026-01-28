@@ -1,5 +1,5 @@
 from django.utils import timezone
-from drf_spectacular.utils import OpenApiResponse, extend_schema, extend_schema_view
+from drf_spectacular.utils import OpenApiResponse, extend_schema, extend_schema_view, OpenApiParameter
 from rest_framework import status
 from rest_framework.decorators import action, api_view
 from rest_framework.permissions import AllowAny, IsAuthenticated
@@ -15,6 +15,10 @@ from .serializers import (
     HelpListSerializer,
     HelpRetrieveSerializer,
 )
+
+from rest_framework.filters import OrderingFilter
+from django_filters.rest_framework import DjangoFilterBackend
+from .filters import HelpFilter
 
 
 @extend_schema(
@@ -65,6 +69,49 @@ class HelpCategoryViewSet(ModelViewSet):
     list=extend_schema(
         summary="List help requests and offers",
         tags=["Help"],
+        parameters=[
+            OpenApiParameter(
+                name="ordering",
+                type=str,
+                description=(
+                        "Sorting:\n"
+                        "- -created_at → newest first\n"
+                        "- created_at → oldest first"
+                ),
+            ),
+            OpenApiParameter(
+                name="category",
+                type=int,
+                description="Filter by category ID",
+            ),
+            OpenApiParameter(
+                name="creator",
+                type=int,
+                description="Filter by creator user ID",
+            ),
+            OpenApiParameter(
+                name="counterpart",
+                type=int,
+                description="Filter by counterpart user ID",
+            ),
+            OpenApiParameter(
+                name="status",
+                type=str,
+                enum=[c[0] for c in Help.Status.choices],
+                description="Filter by help status",
+            ),
+            OpenApiParameter(
+                name="kind",
+                type=str,
+                enum=[c[0] for c in Help.Kind.choices],
+                description="Filter by help kind",
+            ),
+            OpenApiParameter(
+                name="completed",
+                type=bool,
+                description="true = completed, false = not completed",
+            ),
+        ],
     ),
     retrieve=extend_schema(
         summary="Retrieve help details",
@@ -130,7 +177,15 @@ class HelpCategoryViewSet(ModelViewSet):
 )
 class HelpViewSet(ModelViewSet):
     queryset = Help.objects.all()
-    schema_tags = ["Help"]
+    filter_backends = [
+        DjangoFilterBackend,
+        OrderingFilter,
+    ]
+
+    filterset_class = HelpFilter
+
+    ordering_fields = ["created_at"]
+    ordering = ["-created_at"]
 
     def perform_create(self, serializer):
         serializer.save(creator=self.request.user)
