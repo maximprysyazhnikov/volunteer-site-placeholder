@@ -1,4 +1,6 @@
 import { Outlet, Link } from 'react-router-dom';
+import { SignUpProvider } from '../../context/SignUpContext';
+
 import './AuthLayout.scss';
 import logo from '../../assets/header_logo_image.svg';
 
@@ -13,7 +15,9 @@ const AuthLayout = () => {
       </div>
 
       <div className='auth-layout__form'>
-        <Outlet />
+        <SignUpProvider>
+          <Outlet />
+        </SignUpProvider>
       </div>
     </div>
   );

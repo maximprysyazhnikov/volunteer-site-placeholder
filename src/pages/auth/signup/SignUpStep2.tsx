@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useSignUp } from '../../../context/SignUpContext';
 import SignUpForm from './SignUpForm';
 import uaFlag from '../../../assets/flag-ukraine.svg';
 import {
@@ -9,8 +10,9 @@ import {
 } from '../../../utils/validators';
 
 const SignUpStep2 = () => {
-  const [email, setEmail] = useState('');
-  const [phone, setPhone] = useState('');
+const { data, setEmail, setPhone } = useSignUp();
+const { email, phone_number: phone } = data;
+
   const [emailError, setEmailError] = useState(false);
   const [phoneError, setPhoneError] = useState(false);
 
