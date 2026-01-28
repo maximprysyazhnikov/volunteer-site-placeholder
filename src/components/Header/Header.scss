@@ -19,6 +19,7 @@
       @include flex-center;
       justify-content: flex-start;
       gap: 4px;
+      flex-shrink: 0;
 
       &__title {
         @include text-body;
@@ -29,9 +30,11 @@
 
     &__pages {
       @include flex-center;
+      gap: 24px;
 
       &__page {
-        width: 184px;
+        min-width: 120px;
+        padding: 0 16px;
         height: 41px;
         @include flex-center;
 
@@ -45,6 +48,7 @@
     &__buttons {
       display: flex;
       gap: 24px;
+      flex-shrink: 0;
 
       a {
         color: inherit;
@@ -69,7 +73,8 @@
     }
 
     &__brand {
-      @include flex-center;
+      display: flex;
+      align-items: center;
       gap: 4px;
       text-decoration: none;
       color: inherit;
