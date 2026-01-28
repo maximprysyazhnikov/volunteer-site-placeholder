@@ -1,5 +1,8 @@
 import { useTranslation } from "react-i18next";
 import "./HomePage.scss"
+import ActiveRequests from "../../components/ActiveGroup/ActiveGroup";
+import { Link } from "react-router-dom";
+import ActiveGroup from "../../components/ActiveGroup/ActiveGroup";
 
 export default function HomePage() {
   const { t } = useTranslation();
@@ -18,8 +21,8 @@ export default function HomePage() {
         </div>
 
         <div className="home__buttons">
-          <div className="home__buttons__button button1">{t("nav-button-1")}</div>
-          <div className="home__buttons__button button2">{t("nav-button-2")}</div>
+          <Link to={"/requests"} className="home__buttons__button button1">{t("nav-button-1")}</Link>
+          <Link to={"/offers"} className="home__buttons__button button2">{t("nav-button-2")}</Link>
         </div>
       </div>
 
@@ -106,88 +109,19 @@ export default function HomePage() {
         </div>
       </div>
 
-      <div className="home-active-requests">
-
-        <div className="home-active-requests__main">
-          
-          <div className="home-active-requests__main__title">{t("active-requests-title")}</div>
-
-          <div className="home-active-requests__main__paragraphs">
-            <p className="home-active-requests__main__paragraphs__p">
-              {t("active-requests-1st-p")}
-            </p>
-            <p className="home-active-requests__main__paragraphs__p">
-              {t("active-requests-2nd-p")}
-            </p>
-          </div>
-        </div>
-
-        <div className="home-active-requests__blocks">
-
-          <div className="home-active-requests__blocks__block">
-            <div className="home-active-requests__blocks__block__photo"></div>
-
-            <div className="home-active-requests__blocks__block__title">
-              {t("active-requests-1st-block-title")}
-            </div>
-
-            <div className="home-active-requests__blocks__block__p">
-              {t("active-requests-1st-block-p")}
-            </div>
-
-            <div className="home-active-requests__blocks__block__bottom">
-              <p className="home-active-requests__blocks__block__bottom__city">{t("Kharkiv-city")}</p>
-              <p className="home-active-requests__blocks__block__bottom__category">{t("Logistics")}</p>
-            </div>
-          </div>
-          
-          <div className="home-active-requests__blocks__block">
-            <div className="home-active-requests__blocks__block__photo"></div>
-
-            <div className="home-active-requests__blocks__block__title">
-              {t("active-requests-1st-block-title")}
-            </div>
-
-            <div className="home-active-requests__blocks__block__p">
-              {t("active-requests-1st-block-p")}
-            </div>
-
-            <div className="home-active-requests__blocks__block__bottom">
-              <p className="home-active-requests__blocks__block__bottom__city">{t("Kharkiv-city")}</p>
-              <p className="home-active-requests__blocks__block__bottom__category">{t("Logistics")}</p>
-            </div>
-          </div>
-
-          <div className="home-active-requests__blocks__block">
-            <div className="home-active-requests__blocks__block__photo"></div>
-
-            <div className="home-active-requests__blocks__block__title">
-              {t("active-requests-1st-block-title")}
-            </div>
-
-            <div className="home-active-requests__blocks__block__p">
-              {t("active-requests-1st-block-p")}
-            </div>
-
-            <div className="home-active-requests__blocks__block__bottom">
-              <p className="home-active-requests__blocks__block__bottom__city">{t("Kharkiv-city")}</p>
-              <p className="home-active-requests__blocks__block__bottom__category">{t("Logistics")}</p>
-            </div>
-          </div>
-
-          
-          
-        </div>
-
-        <div className="home-active-requests__see-all">
-          <p className="home-active-requests__see-all__p">{t("see-all")}</p>
-          <img 
-            src="/images/ui/ph_arrow-right-light.png" 
-            alt="arrow-right-button" 
-            className="home-active-requests__see-all__button" 
-          />
-        </div>
-      </div>
+        <ActiveGroup 
+          title={t("active-requests-title")}
+          p={t("active-requests-1st-p")}
+          p2={t("active-requests-2nd-p")}
+          seeAll={t("see-all-requests")}
+        /> 
+        <ActiveGroup
+          title={t("active-offers-title")}
+          p={t("active-offers-1st-p")}
+          p2={t("active-offers-2nd-p")}
+          seeAll={t("see-all-offers")}
+        /> 
+      
     </div>
   )
 }
