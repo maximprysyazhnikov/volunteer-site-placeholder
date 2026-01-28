@@ -1,17 +1,18 @@
 @use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
 
 .profile {
   &__sidebar {
     grid-column: 1;
     width: 392px;
     height: 374px;
-    border: 1px solid $color-gray-main;
     padding: 24px;
+    border: 1px solid $color-gray-main;
   }
 
   &__user {
-    display: flex;
-    align-items: center;
+    @include flex-center;
+    justify-content: flex-start;
     gap: 16px;
     margin-bottom: 24px;
   }
@@ -23,34 +24,32 @@
   }
 
   &__name {
-    font-size: 18px;
-    font-weight: 600;
-    line-height: 1.4;
+    @include text-body-lg;
+    @include text-semibold;
   }
 
   &__email {
-    font-size: 18px;
+    @include text-body-lg;
     color: $color-gray-main;
-    line-height: 24px;
   }
 
   &__menu {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
+    @include flex-column(8px);
   }
 
   &__menu-item {
     height: 48px;
-    display: flex;
-    align-items: center;
-    gap: 16px;
     padding: 0 16px;
-    border: none;
     background: transparent;
-    font-size: 18px;
+    border: none;
     cursor: pointer;
     text-align: left;
+
+    @include flex-center;
+    justify-content: flex-start;
+    gap: 16px;
+
+    @include text-body-lg;
 
     &--active {
       background: $color-black;

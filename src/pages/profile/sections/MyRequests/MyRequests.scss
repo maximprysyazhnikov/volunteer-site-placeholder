@@ -1,32 +1,20 @@
 @use '../../../../styles/variables' as *;
+@use '../../../../styles/mixins' as *;
 
 .my-requests {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
+  @include flex-column(24px);
 
   &__header {
-    display: flex;
+    @include flex-between;
     justify-content: flex-end;
   }
 
   &__create-btn {
-    display: flex;
-    align-items: center;
+    @include button-base;
+    @include button-primary;
+    @include text-body-lg;
+
     gap: 8px;
-
-    padding: 16px 24px;
-    height: 56px;
-
-    background: $color-black;
-    color: $color-white;
-
-    font-size: 18px;
-    font-weight: 400;
-    line-height: 1.4;
-
-    border: none;
-    cursor: pointer;
 
     &:hover {
       opacity: 0.9;
@@ -35,22 +23,21 @@
 
   &__tabs {
     display: flex;
-    background: $color-upload-bg;
-    padding: 8px;
     gap: 8px;
+    padding: 8px;
+    background: $color-upload-bg;
   }
 
   &__tab {
     flex: 1;
     height: 41px;
     padding: 8px 16px;
+
     background: transparent;
     border: none;
     cursor: pointer;
 
-    font-size: 18px;
-    font-weight: 400;
-    line-height: 140%;
+    @include text-body-lg;
     text-align: center;
 
     &--active {
@@ -59,16 +46,8 @@
     }
   }
 
-  &__tab--active {
-    background: $color-black;
-    color: $color-white;
-    border-color: $color-black;
-  }
-
   &__list {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
+    @include flex-column(24px);
   }
 }
 
@@ -78,8 +57,7 @@
   border: 1px solid $color-gray-light-border;
 
   &__top {
-    display: flex;
-    justify-content: space-between;
+    @include flex-between;
     margin-bottom: 12px;
   }
 
@@ -92,24 +70,18 @@
   }
 
   &__title {
-    margin: 0 0 8px;
-    font-family: $font-main;
-    font-size: 18px;
-    color: $color-black;
+    margin-bottom: 8px;
+    @include text-body-lg;
   }
 
   &__description {
     margin-bottom: 16px;
-    font-family: $font-main;
-    font-size: 14px;
+    @include text-caption;
     color: $color-gray-hint;
   }
 
-
   &__footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    @include flex-between;
   }
 
   &__actions {
@@ -118,19 +90,16 @@
   }
 
   &__edit {
-    background: transparent;
-    border: 1px solid $color-black;
+    @include button-base;
+    @include button-secondary;
     padding: 8px 16px;
-    font-family: $font-main;
-    cursor: pointer;
+    font-size: 14px;
   }
 
   &__view {
-    background: $color-black;
-    color: $color-white;
-    border: none;
+    @include button-base;
+    @include button-primary;
     padding: 8px 16px;
-    font-family: $font-main;
-    cursor: pointer;
+    font-size: 14px;
   }
 }

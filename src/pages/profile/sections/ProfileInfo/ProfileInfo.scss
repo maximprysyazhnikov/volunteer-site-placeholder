@@ -1,4 +1,5 @@
 @use '../../../../styles/variables' as *;
+@use '../../../../styles/mixins' as *;
 
 .profile {
   &__card {
@@ -6,14 +7,11 @@
   }
 
   &__header {
-    display: flex;
-    flex-direction: column;
+    @include flex-column;
   }
 
   &__title {
-    font-size: 24px;
-    font-weight: 500;
-    line-height: 1.2;
+    @include text-h2;
     margin-bottom: 24px;
   }
 
@@ -23,61 +21,50 @@
 
   &__label {
     display: block;
-    font-size: 16px;
-    font-weight: 400;
     padding: 0 16px;
-    line-height: 1.4;
-    color: $color-black;
     margin-bottom: 4px;
+    color: $color-black;
+    @include text-body;
   }
 
   &__input {
-    height: $control-height;
-    margin-bottom: 16px;
     width: 100%;
-    border: 1px solid $color-gray-border;
-    padding: 16px;
-    font-size: 16px;
-    font-family: $font-main;
-    color: $color-black;
+    margin-bottom: 16px;
+    @include control-base;
+    border-color: $color-gray-border;
   }
 
   &__role {
     height: $control-height;
-    display: flex;
-    align-items: center;
-    gap: 8px;
     margin-bottom: 40px;
+
+    @include flex-center;
+    justify-content: flex-start;
+    gap: 8px;
   }
 
   &__role-label {
-    font-size: 18px;
+    @include text-body-lg;
     font-weight: 500;
   }
 
   &__role-value {
-    font-size: 18px;
+    @include text-body-lg;
   }
 
   &__actions {
-    display: flex;
+    @include flex-between;
     justify-content: flex-end;
   }
 
   &__save-btn {
     width: 302px;
-    height: $control-height;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: $color-gray-main;
-    color: $color-white;
-    font-size: 18px;
-    border: none;
+    @include button-base;
+    @include button-disabled;
+    @include text-body-lg;
 
     &--active {
-      background: $color-black;
-      cursor: pointer;
+      @include button-primary;
     }
   }
 
@@ -86,10 +73,8 @@
   }
 
   &__contacts-title {
-    font-size: 24px;
-    font-weight: 500;
+    @include text-h2;
     margin-bottom: 24px;
-    line-height: 1.2;
   }
 
   &__contact-row {
@@ -101,34 +86,28 @@
   }
 
   &__contact-field {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
+    @include flex-column(4px);
   }
 
   &__contact-label {
-    font-size: 16px;
     padding-left: 16px;
-    line-height: 1.2;
     color: $color-black;
+    @include text-body;
   }
 
   &__contact-input {
-    height: $control-height;
+    @include control-base;
     background: $color-input-bg;
-    border: none;
-    padding: 16px;
-    font-size: 18px;
     color: $color-placeholder;
+    font-size: 18px;
+
+    border: none;
   }
 
   &__contact-btn {
     width: 184px;
-    height: $control-height;
-    border: 1px solid $color-black;
-    background: $color-white;
-    font-size: 18px;
-    line-height: 1.2;
-    cursor: pointer;
+    @include button-base;
+    @include button-secondary;
+    @include text-body-lg;
   }
 }

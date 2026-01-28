@@ -1,44 +1,36 @@
 @use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
 
 .create-request {
   &__back {
-    display: inline-flex;
-    align-items: center;
+    @include flex-center;
+    justify-content: flex-start;
     gap: 8px;
     margin-bottom: 40px;
 
     background: transparent;
     border: none;
     padding: 0;
-
-    font-size: 16px;
-    line-height: 1.4;
-    color: $color-black;
     cursor: pointer;
 
+    @include text-body;
+
     img {
-      width: 24px;
-      height: 24px;
+      @include icon-24;
     }
   }
 
   &__title {
     margin-bottom: 24px;
-
-    font-size: 24px;
-    font-weight: 400;
-    line-height: 1.4;
-    color: $color-black;
+    @include text-h2;
   }
 
   &__form {
-    display: flex;
-    flex-direction: column;
+    @include flex-column;
   }
 
   &__field {
-    display: flex;
-    flex-direction: column;
+    @include flex-column;
     margin-bottom: 24px;
 
     &:nth-last-of-type(2) {
@@ -49,108 +41,59 @@
   &__label {
     margin-bottom: 4px;
     padding-left: 16px;
-
-    font-size: 16px;
-    line-height: 1.4;
-    color: $color-black;
+    @include text-body;
   }
 
-  // Общий базовый стиль для всех контролов
   &__input,
   &__select,
   &__textarea {
-    padding: 16px;
-    border: 1px solid $color-gray-main;
-    background: $color-white;
-
-    font-family: $font-main;
-    font-size: 16px;
-    line-height: 1.4;
-    color: $color-black;
-
-    outline: none;
-
-    &:focus {
-      border-color: $color-black;
-      box-shadow: none;
-    }
-
-    &::placeholder {
-      font-family: $font-main;
-      font-size: 16px;
-      line-height: 1.4;
-      color: $color-gray-main;
-      opacity: 1;
-    }
+    @include control-base;
   }
 
-  // Только для input и select
   &__input,
   &__select {
     height: $control-height;
 
     appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-
     background-image: url('../../assets/arrow-down.svg');
     background-repeat: no-repeat;
     background-position: right 16px center;
     background-size: 24px 24px;
   }
 
-  // Только для textarea
   &__textarea {
-    min-height: calc(#{$control-height} * 2);
+    @include textarea-base;
     padding: 8px 16px;
-
-    resize: none;
-    overflow: hidden;
   }
 
   &__hint {
     margin-top: 4px;
-
-    font-size: 14px;
-    line-height: 1.4;
+    @include text-caption;
     color: $color-gray-hint;
   }
 
   &__actions {
-    display: flex;
+    @include flex-between;
     justify-content: flex-end;
     gap: 16px;
   }
 
   &__cancel,
   &__publish {
-    height: $control-height;
-    min-width: 184px; // как в макете
-    padding: 0 24px;
-
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-
-    font-size: 16px;
-    line-height: 1.4;
+    min-width: 184px;
+    @include button-base;
+    @include text-body;
   }
+
   &__cancel {
-    border: 1px solid $color-black;
-    background: $color-white;
-    color: $color-black;
-    cursor: pointer;
+    @include button-secondary;
   }
 
   &__publish {
-    border: none;
-    background: $color-gray-main;
-    color: $color-white;
-    cursor: not-allowed;
+    @include button-disabled;
 
     &--active {
-      background: $color-black;
-      cursor: pointer;
+      @include button-primary;
     }
   }
 }

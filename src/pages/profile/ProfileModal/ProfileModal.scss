@@ -1,12 +1,9 @@
 @use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
 
 .modal-overlay {
-  position: fixed;
-  inset: 0;
+  @include overlay-center;
   background: rgba($color-black, 0.45);
-  display: flex;
-  align-items: center;
-  justify-content: center;
   z-index: 1000;
 }
 
@@ -17,24 +14,18 @@
   box-shadow: 0 8px 32px rgba($color-black, 0.12);
 
   &__header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    @include flex-between;
+    height: $control-height;
     margin-bottom: 8px;
-    height: 56px;
   }
 
   &__title {
-    font-weight: 600;
-    font-size: 24px;
-    line-height: 120%;
-    color: $color-black;
+    @include text-h2;
+    @include text-semibold;
   }
 
   &__subtitle-hint {
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 1.35;
+    @include text-caption;
     color: $color-gray-main;
     margin-bottom: 16px;
   }
@@ -47,39 +38,30 @@
     border: none;
     cursor: pointer;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include flex-center;
 
     img {
-      width: 24px;
-      height: 24px;
+      @include icon-24;
     }
   }
 
   &__body {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
+    @include flex-column(4px);
     margin-bottom: 32px;
   }
 
   &__label-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    @include flex-between;
     padding: 0 16px;
   }
 
   &__label {
-    font-size: 16px;
-    color: $color-black;
-    line-height: 1.4;
+    @include text-body;
   }
 
   &__phone {
-    display: flex;
-    height: 56px;
+    @include flex-center;
+    height: $control-height;
     border: 1px solid $color-gray-border;
   }
 
@@ -87,17 +69,13 @@
     flex: 1;
     border: none;
     padding: 0 8px;
-    font-size: 18px;
+    @include text-body-lg;
     outline: none;
 
     &::placeholder {
       color: $color-gray-main;
-      font-size: 18px;
+      @include text-body-lg;
     }
-  }
-
-  &__phone-input.modal__input--error {
-    border: none;
   }
 
   &__phone.modal__input--error {
@@ -105,37 +83,31 @@
   }
 
   &__country {
-    display: flex;
-    align-items: center;
+    @include flex-center;
     gap: 8px;
     padding: 0 16px;
     background: $color-gray-bg;
     border-right: 1px solid $color-gray-border;
 
     span {
-      font-size: 18px;
-      font-family: $font-main;
-      line-height: 1.4;
+      @include text-body-lg;
       color: $color-black;
     }
   }
 
   &__error {
-    font-size: 14px;
+    @include text-caption;
     color: $color-error;
   }
 
   &__input {
-    height: 56px;
-    padding: 0 16px;
+    @include control-base;
     background: $color-input-bg;
-    border: 1px solid transparent;
-    font-size: 18px;
-    outline: none;
+    border-color: transparent;
 
     &::placeholder {
+      @include text-body-lg;
       color: $color-placeholder;
-      font-size: 18px;
     }
 
     &--error {
@@ -145,22 +117,17 @@
 
   &__submit {
     width: 100%;
-    height: 56px;
-    background: $color-gray-main;
-    color: $color-white;
-    font-size: 18px;
-    border: none;
-    cursor: pointer;
+    @include button-base;
+    @include button-disabled;
+    @include text-body-lg;
 
     &--active {
-      background: $color-black;
+      @include button-primary;
     }
   }
 
   &__subtitle {
-    font-size: 16px;
-    line-height: 1.35;
-    color: $color-black;
+    @include text-body;
     margin-bottom: 24px;
 
     strong {
@@ -169,28 +136,22 @@
   }
 
   &__back {
-    width: 24px;
-    height: 24px;
+    @include icon-24;
     margin-bottom: 24px;
     background: transparent;
     border: none;
     cursor: pointer;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include flex-center;
   }
 
   &__code-label {
-    font-size: 16px;
-    line-height: 1.2;
+    @include text-body;
     margin-bottom: 8px;
-    color: $color-black;
   }
 
   &__code-row {
-    display: flex;
-    align-items: center;
+    @include flex-center;
     gap: 4px;
     margin-bottom: 32px;
   }
@@ -199,19 +160,17 @@
     width: 24px;
     height: 1px;
     background: $color-gray-main;
-    align-self: center;
     flex-shrink: 0;
   }
 
   &__code-input {
     width: 84px;
-    height: 56px;
+    height: $control-height;
     border-radius: 40px;
     background: $color-input-bg;
     border: 1px solid transparent;
     text-align: center;
-    font-size: 18px;
-    outline: none;
+    @include text-body-lg;
     color: $color-black;
 
     &:focus {
@@ -222,11 +181,9 @@
 
   &__resend {
     margin-top: 16px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include flex-center;
     gap: 8px;
-    font-size: 16px;
+    @include text-body;
     color: $color-gray-main;
   }
 
@@ -234,16 +191,16 @@
     background: transparent;
     border: none;
     padding: 0;
-    font-size: 16px;
-    font-weight: 500;
-    color: $color-black;
     cursor: pointer;
+
+    @include text-body;
+    font-weight: 500;
   }
 
   &__password-group {
     margin-bottom: 32px;
   }
-  
+
   &__actions {
     margin-top: 32px;
   }
