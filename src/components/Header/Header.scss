@@ -1,4 +1,3 @@
-@use '../../styles/variables' as *;
 @use '../../styles/mixins' as *;
 
 .header {
@@ -24,23 +23,43 @@
       &__title {
         @include text-body;
         font-weight: 500;
-        line-height: 1;
+        font-style: Medium;
+        line-height: 100%;
+        font-size: 16px;
       }
     }
 
     &__pages {
-      @include flex-center;
-      gap: 24px;
+      display: flex;
+      justify-self: center;
+      align-self: center;
 
       &__page {
-        min-width: 120px;
-        padding: 0 16px;
+        @include centeredFlexBox;
+        width: 184px;
         height: 41px;
-        @include flex-center;
+        
+        text-decoration: none;
+        color: #000;
+
+        position: relative;
 
         &__title {
-          @include text-body-lg;
-          font-weight: 500;
+          @include title-styles;
+          font-size: 18px;
+        }
+
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 50;
+
+          width: 0;
+          height: 2px;
+          background-color: #000;
+
+          transition: width 0.3s ease;
         }
       }
     }
@@ -56,6 +75,7 @@
       }
 
       &__button {
+        padding: 16px;
         height: 100%;
         min-width: 80px;
         box-sizing: border-box;
@@ -64,7 +84,7 @@
         border: none;
         cursor: pointer;
 
-        @include flex-center;
+        @include centeredFlexBox;
 
         &.lang-changer {
           background-color: $color-input-bg;
@@ -92,6 +112,9 @@
 
     gap: 8px;
 
+    border: none;
+    @include p-styles;
+
     img {
       @include icon-24;
     }
@@ -99,11 +122,20 @@
 }
 
 .sign-in {
-  @include button-secondary;
-  @include text-body-lg;
+  border: 1px solid #000;
+  @include p-styles;
 }
 
 .sign-up {
-  @include button-primary;
-  @include text-body-lg;
+  background-color: #000;
+  color: #fff;
+  @include p-styles;
+}
+
+.has-underline {
+  color: #000;
+
+  &::after {
+    width: 50%;
+  }
 }

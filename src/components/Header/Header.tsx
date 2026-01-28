@@ -1,16 +1,22 @@
 import { useTranslation } from 'react-i18next';
-import { LangChanger } from '../LangChanger/LangChanger';
-import { Link } from 'react-router-dom';
+import { LangChanger } from '../UI-elements/LangChanger/LangChanger';
+import { Link, NavLink } from 'react-router-dom';
 import logo from '../../assets/header_logo_image.svg';
 import { useAuth } from '../../context/AuthContext';
 import profileIcon from '../../assets/profile.svg';
 
 import './Header.scss';
+import classNames from 'classnames';
 
 export default function Header() {
   const { t } = useTranslation();
-  const { isAuth} = useAuth();
-  console.log('HEADER: render, isAuth =', isAuth);
+  const { isAuth } = useAuth();
+  // console.log('HEADER: render, isAuth =', isAuth);
+
+  const ActivateLink = ({ isActive }: { isActive: boolean }) =>
+    classNames('header__nav__pages__page', {
+      'has-underline': isActive,
+    });
 
   return (
     <header className='header'>
@@ -21,17 +27,20 @@ export default function Header() {
         </Link>
 
         <div className='header__nav__pages'>
-          <div className='header__nav__pages__page'>
+
+          <NavLink to={"/requests"} className={ActivateLink}>
             <p className='header__nav__pages__page__title'>{t('Requests')}</p>
-          </div>
-          <div className='header__nav__pages__page'>
+          </NavLink>
+
+          <NavLink to={"/offers"} className={ActivateLink}>
             <p className='header__nav__pages__page__title'>{t('Offers')}</p>
-          </div>
+          </NavLink>
+          
         </div>
 
         <div className='header__nav__buttons'>
           <LangChanger />
-
+          
           {!isAuth ? (
             <>
               <Link to='/signin'>
@@ -50,8 +59,8 @@ export default function Header() {
             <>
               <Link to='/profile'>
                 <button className='header__nav__buttons__button header__profile-btn'>
-                  <img src={profileIcon} alt='' />
-                  {t('My profile')}
+                  <img src={profileIcon} alt='profileIcon' />
+                  {t('my-profile')}
                 </button>
               </Link>
             </>

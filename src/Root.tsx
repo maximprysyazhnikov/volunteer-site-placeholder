@@ -7,10 +7,10 @@ import {
 } from 'react-router-dom';
 
 import App from './App';
-import HomePage from './components/HomePage/HomePage';
+import HomePage from './pages/HomePage/HomePage';
 
 import AuthLayout from './pages/auth/AuthLayout';
-import SignInPage from './pages/auth/signin/SignInPage';
+import SignInFormPage from './pages/auth/signin/SignInFormPage';
 import SignUpStep1 from './pages/auth/signup/SignUpStep1';
 import SignUpStep2 from './pages/auth/signup/SignUpStep2';
 import SignUpStep3 from './pages/auth/signup/SignUpStep3';
@@ -18,6 +18,8 @@ import SignUpStep4 from './pages/auth/signup/SignUpStep4';
 import { ProfilePage } from './pages/profile/ProfilePage';
 
 import { AuthProvider } from './context/AuthContext';
+import CatalogPage from './pages/CatalogPage/CatalogPage';
+import CartDetails from './pages/CartDetailsPage/CartDetailsPage';
 
 export const Root = () => (
   <StrictMode>
@@ -27,11 +29,31 @@ export const Root = () => (
           <Route path='/' element={<App />}>
             <Route index element={<HomePage />} />
             <Route path='profile' element={<ProfilePage />} />
+
+            <Route path='requests' element={<CatalogPage 
+              title={"Requests"} 
+              p={"Browse verified requests from people and organizations who need support right now."}
+              p2={"Every response matters."}
+              />}
+             />
+
+            <Route path="requests/:cartId" element={<CartDetails type={"requests"} />} />
+            
+            <Route path='offers' element={<CatalogPage 
+              title={"Offers"} 
+              p={"Explore offers from people and organizations ready to help."}
+              p2={"Find support that matches your needs."}
+              />}
+            />
+            
+            <Route path="offers/:cartId" element={<CartDetails type={"offers"} />} />
+
+
             <Route path='home' element={<Navigate to='/' replace />} />
           </Route>
 
           <Route element={<AuthLayout />}>
-            <Route path='/signin' element={<SignInPage />} />
+            <Route path='/signin' element={<SignInFormPage />} />
 
             <Route path='signup'>
               <Route index element={<Navigate to='step-1' />} />

@@ -1,6 +1,7 @@
 import { useTranslation } from "react-i18next";
 import "./Footer.scss"
 import logo from '../../assets/header_logo_image.svg';
+import { Link } from "react-router-dom";
 
 export default function Footer() {
   const { t } = useTranslation();
@@ -18,8 +19,8 @@ export default function Footer() {
         <div className="footer__nav__support">📧 support@wingsofhelp.org</div>
 
         <div className="footer__nav__explores">
-          <div className="footer__nav__explores__requests">{t("explores__requests")}</div>
-          <div className="footer__nav__explores__offers">{t("explores__offers")}</div>
+          <Link to={"/requests"} className="footer__nav__explores__requests">{t("explores__requests")}</Link>
+          <Link to={"/offers"} className="footer__nav__explores__offers">{t("explores__offers")}</Link>
         </div>
       </div>
 
