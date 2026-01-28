@@ -15,10 +15,15 @@ if DEBUG:
 
 
 SECRET_KEY = os.environ["SECRET_KEY"]
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+USE_X_FORWARDED_HOST = True
 
 
 
 ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "127.0.0.1").split(",")
+CSRF_TRUSTED_ORIGINS = [
+    "https://alert-ambition-dev.up.railway.app",
+]
 
 
 # Application definition
