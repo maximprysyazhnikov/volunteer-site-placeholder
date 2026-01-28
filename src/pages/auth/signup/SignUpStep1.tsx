@@ -2,10 +2,11 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import SignUpForm from '../signup/SignUpForm';
 import { isNameValid } from '../../../utils/validators';
+import { useSignUp } from '../../../context/SignUpContext';
 
 const SignUpStep1 = () => {
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
+  const { data, setFirstName, setLastName } = useSignUp();
+  const { first_name: firstName, last_name: lastName } = data;
 
   const [firstNameError, setFirstNameError] = useState(false);
   const [lastNameError, setLastNameError] = useState(false);
@@ -18,7 +19,7 @@ const SignUpStep1 = () => {
     if (!value) return value;
     return value.charAt(0).toUpperCase() + value.slice(1);
   };
-  
+
   const handleContinue = () => {
     const firstValid = isNameValid(firstName);
     const lastValid = isNameValid(lastName);

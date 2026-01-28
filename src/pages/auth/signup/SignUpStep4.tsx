@@ -6,9 +6,13 @@ import { isPasswordValid } from '../../../utils/validators';
 import eyeOpen from '../../../assets/eye-open.svg';
 import eyeClosed from '../../../assets/eye-closed.svg';
 import checkIcon from '../../../assets/checkbox-check.svg';
+import { useSignUp } from '../../../context/SignUpContext';
+import { registerRequest } from '../../../api/auth.api';
 
 const SignUpStep4 = () => {
-  const [password, setPassword] = useState('');
+  const { data, setPassword, reset } = useSignUp();
+  const { password } = data;
+
   const [confirm, setConfirm] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [agree, setAgree] = useState(false);
@@ -19,9 +23,17 @@ const SignUpStep4 = () => {
   const isMatch = password === confirm;
   const isValid = isPasswordValid(password, confirm) && agree;
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (!isValid) return;
-    navigate('/signin');
+
+    try {
+      await registerRequest(data);
+      reset();
+      navigate('/signin');
+    } catch (error) {
+      console.error('Registration failed:', error);
+      // пізніше можна додати показ помилки користувачу
+    }
   };
 
   return (
