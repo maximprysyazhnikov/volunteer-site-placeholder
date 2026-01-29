@@ -48,19 +48,26 @@ export const Root = () => (
             
             <Route path="offers/:cartId" element={<CartDetails type={"offers"} />} />
 
-
             <Route path='home' element={<Navigate to='/' replace />} />
           </Route>
 
           <Route element={<AuthLayout />}>
             <Route path='/signin' element={<SignInFormPage />} />
 
+            <Route path='/administrationsignup'>
+              <Route index element={<Navigate to='step-1' />} />
+              <Route path='step-1' element={<SignUpStep1 admin={true}/>} />
+              <Route path='step-2' element={<SignUpStep2 admin={true}/>} />
+              <Route path='step-3' element={<SignUpStep3 admin={true}/>} />
+              <Route path='step-4' element={<SignUpStep4 admin={true}/>} />
+            </Route> 
+
             <Route path='signup'>
               <Route index element={<Navigate to='step-1' />} />
-              <Route path='step-1' element={<SignUpStep1 />} />
-              <Route path='step-2' element={<SignUpStep2 />} />
-              <Route path='step-3' element={<SignUpStep3 />} />
-              <Route path='step-4' element={<SignUpStep4 />} />
+              <Route path='step-1' element={<SignUpStep1 admin={false}/>} />
+              <Route path='step-2' element={<SignUpStep2 admin={false}/>} />
+              <Route path='step-3' element={<SignUpStep3 admin={false}/>} />
+              <Route path='step-4' element={<SignUpStep4 admin={false}/>} />
             </Route>
           </Route>
         </Routes>

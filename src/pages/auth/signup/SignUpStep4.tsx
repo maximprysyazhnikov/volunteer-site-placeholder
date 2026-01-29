@@ -6,7 +6,11 @@ import eyeOpen from '../../../assets/eye-open.svg';
 import eyeClosed from '../../../assets/eye-closed.svg';
 import checkIcon from '../../../assets/checkbox-check.svg';
 
-const SignUpStep4 = () => {
+type Props = {
+  admin: boolean;
+}
+
+const SignUpStep4 = ({admin}: Props) => {
   const [password, setPassword] = useState('');
   const [confirm, setConfirm] = useState('');
   const [showPassword, setShowPassword] = useState(false);
@@ -18,13 +22,18 @@ const SignUpStep4 = () => {
   const isMatch = password === confirm;
   const isValid = isMinLength && isMatch && agree;
 
-  const handleSubmit = () => {
+  const handleSubmit = (path: string) => {
     if (!isValid) return;
-    navigate('/signin');
+    navigate(path);
   };
 
   return (
-    <SignUpForm step={4} isValid={isValid} onContinue={handleSubmit}>
+    <SignUpForm 
+      step={4} 
+      isValid={isValid} 
+      onContinue={() => handleSubmit('/signin')}
+      path='administrationsignup'
+    >
       {/* Password */}
       <label className='auth-form__label auth-form__label--with-error'>
         <span className='auth-form__label-row'>
