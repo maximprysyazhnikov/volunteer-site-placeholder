@@ -1,7 +1,6 @@
 import "./CatalogCategories.scss"
 // import arrowDown from '../../assets/arrow-down.svg';
 import CustomCheckbox from "../UI-elements/CurtomCheckbox/CustomCheckbox";
-import CustomSelect from "../UI-elements/CustomSelect/CustomSelect";
 import { useAuth } from '../../context/AuthContext';
 import CustomSearchDropdown from "../UI-elements/CustomSearchDropdown/CustomSearchDropdown";
 
