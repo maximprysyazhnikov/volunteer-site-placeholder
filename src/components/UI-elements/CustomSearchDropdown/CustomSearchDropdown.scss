@@ -1,6 +1,6 @@
 @use '../../../styles/mixins.scss' as *;
 
-.custom-select {
+.custom-dropdown {
   position: relative;
 
   &__trigger {
@@ -13,13 +13,34 @@
     justify-content: space-between;
     align-items: center;
 
-    &.open .arrow {
+    &.open .custom-dropdown__arrow {
       transform: rotate(180deg);
     }
+  }
 
-    .arrow {
-      transition: 0.2s;
+  &__value {
+    @include p-styles;
+    color: #868E96;
+
+    &--selected {
+      color: #000;
     }
+  }
+
+  &__search {
+    width: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    @include p-styles;
+    color: #000;
+  }
+
+  &__arrow {
+    height: 24px;
+    width: 24px;
+    transition: 0.2s;
+    flex-shrink: 0;
   }
 
   &__options {
@@ -45,71 +66,42 @@
   }
 }
 
-.selected-ops {
-  color: #868E96;
-  @include p-styles;
-}
+/* ===== MODIFIERS ===== */
 
-.arrow {
-  height: 24px;
-  width: 24px;
-}
-
-.custom-select--lang {
+.custom-dropdown--lang {
   @include centeredFlexBox;
   gap: 8px;
   width: 80px;
   height: 57px;
   background-color: #F1F1F4;
 
-  .custom-select__trigger {
+  .custom-dropdown__trigger {
     background: transparent;
     border: none;
+    padding: 0;
   }
 
-  // .custom-select__options {
-  //   min-width: 80px;
-  //   border: none;
-  //   box-shadow: none;
-  //   margin-top: 4px;
-  // }
-
-  // .custom-select__option {
-  //   background: #f1f1f4;
-  //   height: 28px;
-  //   @include centeredFlexBox;
-
-  //   &:hover {
-  //     background: #e6e6ea;
-  //   }
-  // }
-
-  //styles above are for changing ops styles
-
-  .selected-ops {
-    @include p-styles;
+  .custom-dropdown__value {
     color: #000;
   }
 }
 
-.custom-select--filter {
+.custom-dropdown--filter {
   @include centeredFlexBox;
   width: 141px;
   gap: 8px;
   padding-block: 16px;
   padding-inline: 26px;
-
   height: 57px;
   background-color: #F1F1F4;
 
-  .custom-select__trigger {
+  .custom-dropdown__trigger {
     padding: 0;
     background: transparent;
     border: none;
   }
 
-  .selected-ops {
-    @include p-styles;
+  .custom-dropdown__value {
     color: #000;
   }
 }

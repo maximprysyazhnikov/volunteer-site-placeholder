@@ -59,7 +59,7 @@ export const Root = () => (
               <Route path='step-1' element={<SignUpStep1 admin={true}/>} />
               <Route path='step-2' element={<SignUpStep2 admin={true}/>} />
               <Route path='step-3' element={<SignUpStep3 admin={true}/>} />
-              <Route path='step-4' element={<SignUpStep4 admin={true}/>} />
+              <Route path='step-4' element={<SignUpStep4 />} />
             </Route> 
 
             <Route path='signup'>
@@ -67,7 +67,7 @@ export const Root = () => (
               <Route path='step-1' element={<SignUpStep1 admin={false}/>} />
               <Route path='step-2' element={<SignUpStep2 admin={false}/>} />
               <Route path='step-3' element={<SignUpStep3 admin={false}/>} />
-              <Route path='step-4' element={<SignUpStep4 admin={false}/>} />
+              <Route path='step-4' element={<SignUpStep4 />} />
             </Route>
           </Route>
         </Routes>

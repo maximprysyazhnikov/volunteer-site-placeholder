@@ -5,9 +5,9 @@ import { useState } from 'react';
 export default function AdminStep3() {
   const navigate = useNavigate();
 
-  const [firstName, setFirstName] = useState('');
+  const [secretCode, setSecretCode] = useState('');
 
-  const isValid: boolean = Boolean(firstName.trim());
+  const isValid: boolean = Boolean(secretCode.trim());
   
   const capitalize = (value: string) => {
     if (!value) return value;
@@ -25,9 +25,9 @@ export default function AdminStep3() {
         <span className="auth-form__label-text">Secret Code</span>
         <input
           className='auth-form__input'
-          value={firstName}
+          value={secretCode}
           placeholder='enter secret code for admins success'
-          onChange={(e) => setFirstName(capitalize(e.target.value))}
+          onChange={(e) => setSecretCode(capitalize(e.target.value))}
         />
       </label>
     </SignUpForm>

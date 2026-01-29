@@ -3,6 +3,7 @@ import "./CatalogCategories.scss"
 import CustomCheckbox from "../UI-elements/CurtomCheckbox/CustomCheckbox";
 import CustomSelect from "../UI-elements/CustomSelect/CustomSelect";
 import { useAuth } from '../../context/AuthContext';
+import CustomSearchDropdown from "../UI-elements/CustomSearchDropdown/CustomSearchDropdown";
 
 export default function CatalogCategories() {
   const { isAuth } = useAuth();
@@ -32,7 +33,7 @@ export default function CatalogCategories() {
 
       <div className="catalog__categories__location">
         <h1 className="catalog__categories__location__title">Location</h1>
-        <CustomSelect
+        {/* <CustomSelect
           options={[
             { label: "Kyiv", value: "kyiv" },
             { label: "Lviv", value: "lviv" },
@@ -40,6 +41,15 @@ export default function CatalogCategories() {
           ]}
           placeholder="Choose a city"
           onChange={(value) => console.log(value)}
+          /> */}
+
+          <CustomSearchDropdown 
+            options={[
+              { label: "Kyiv", value: "kyiv" },
+              { label: "Lviv", value: "lviv" },
+              { label: "Odesa", value: "odesa" }
+            ]}
+            onSelect={(value) => console.log(value)}
           />
       </div>
 
