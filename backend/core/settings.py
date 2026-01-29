@@ -89,7 +89,7 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # Database
 DATABASES = {
     "default": dj_database_url.config(
-        default="postgresql://postgres:YAFQTQXTQnGceeciCLfMKBnKwFcJSMKK@switchyard.proxy.rlwy.net:27531/railway",
+        default=os.environ["DATABASE_URL"],
         conn_max_age=600,
         ssl_require=not DEBUG,
     )
