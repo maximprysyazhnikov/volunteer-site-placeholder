@@ -1,28 +1,29 @@
 @use '../../styles/mixins' as *;
+@use '../../styles/mixins/index' as *;
+@use '../../styles/variables' as *;
 
 .header {
   height: 57px;
   max-width: 1400px;
+  width: 100%;
   margin: 24px auto 1px;
 
-  width: 100%;
-  display: flex;
-  margin-bottom: 1px;
+  @include flex-center;
 
   &__nav {
     padding: 0 108px;
     width: 100%;
-    // background-color: grey;
-    display: flex;
-    justify-content: space-between;
+    @include flex-between;
 
     &__wings-sector {
       width: 288px;
-      display: flex;
-      align-items: center;
+      @include flex-center;
+      justify-content: flex-start;
       gap: 4px;
+      flex-shrink: 0;
 
       &__title {
+        @include text-body;
         font-weight: 500;
         font-style: Medium;
         line-height: 100%;
@@ -68,6 +69,7 @@
     &__buttons {
       display: flex;
       gap: 24px;
+      flex-shrink: 0;
 
       a {
         color: inherit;
@@ -80,7 +82,6 @@
         min-width: 80px;
         box-sizing: border-box;
 
-        text-decoration: none;
         background: none;
         border: none;
         cursor: pointer;
@@ -88,7 +89,7 @@
         @include centeredFlexBox;
 
         &.lang-changer {
-          background-color: #f1f1f4;
+          background-color: $color-input-bg;
         }
       }
     }
@@ -106,18 +107,18 @@
     width: 184px;
     height: 57px;
     padding: 16px;
-    background-color: #000;
-    color: #fff;
-    display: flex;
-    align-items: center;
+
+    @include button-base;
+    @include button-primary;
+    @include text-body-lg;
+
     gap: 8px;
 
     border: none;
     @include p-styles;
 
     img {
-      width: 24px;
-      height: 24px;
+      @include icon-24;
     }
   }
 }

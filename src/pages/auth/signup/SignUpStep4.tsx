@@ -1,13 +1,18 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import SignUpForm from './SignUpForm';
+import { isPasswordValid } from '../../../utils/validators';
 
 import eyeOpen from '../../../assets/eye-open.svg';
 import eyeClosed from '../../../assets/eye-closed.svg';
 import checkIcon from '../../../assets/checkbox-check.svg';
+import { useSignUp } from '../../../context/SignUpContext';
+import { registerRequest } from '../../../api/auth.api';
 
 const SignUpStep4 = () => {
-  const [password, setPassword] = useState('');
+  const { data, setPassword, reset } = useSignUp();
+  const { password } = data;
+
   const [confirm, setConfirm] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [agree, setAgree] = useState(false);
@@ -16,11 +21,25 @@ const SignUpStep4 = () => {
 
   const isMinLength = password.length >= 8;
   const isMatch = password === confirm;
-  const isValid = isMinLength && isMatch && agree;
+  const isValid = isPasswordValid(password, confirm) && agree;
 
+<<<<<<< HEAD
   const handleSubmit = (path: string) => {
     if (!isValid) return;
     navigate(path);
+=======
+  const handleSubmit = async () => {
+    if (!isValid) return;
+
+    try {
+      await registerRequest(data);
+      reset();
+      navigate('/signin');
+    } catch (error) {
+      console.error('Registration failed:', error);
+      // пізніше можна додати показ помилки користувачу
+    }
+>>>>>>> 3e69daa1cfb9b5fe618711fd9b3bdfb89d317eed
   };
 
   return (
@@ -67,6 +86,7 @@ const SignUpStep4 = () => {
             )}
           </span>
 
+<<<<<<< HEAD
           <div className='auth-form__password'>
             <input
               className={`auth-form__input ${confirm && !isMatch ? 'auth-form__input--error' : ''}`}
@@ -83,6 +103,24 @@ const SignUpStep4 = () => {
             />
           </div>
         </label>
+=======
+        <div className='auth-form__password'>
+          <input
+            className={`auth-form__input ${confirm && !isMatch ? 'auth-form__input--error' : ''}`}
+            type={showPassword ? 'text' : 'password'}
+            value={confirm}
+            placeholder='Confirm your password'
+            onChange={(e) => setConfirm(e.target.value)}
+          />
+          <img
+            src={showPassword ? eyeOpen : eyeClosed}
+            alt='Toggle password'
+            className='auth-form__eye'
+            onClick={() => setShowPassword((v) => !v)}
+          />
+        </div>
+      </label>
+>>>>>>> 3e69daa1cfb9b5fe618711fd9b3bdfb89d317eed
 
         {/* Checkbox */}
         <label className='auth-form__checkbox'>

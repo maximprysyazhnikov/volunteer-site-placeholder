@@ -1,21 +1,22 @@
 @use '../../styles/variables' as *;
+@use '../../styles/mixins/index' as *;
 
 .auth-layout {
-  display: flex;
-  flex-direction: column;
+  @include flex-column;
   min-height: 100vh;
+  max-width: 2400px;
+  margin: 0 auto;
   background: $color-white;
 
   &__header {
     margin: 24px 108px 0;
     height: $control-height;
-    display: flex;
-    align-items: center;
+    @include flex-center;
+    justify-content: flex-start;
   }
 
   &__brand {
-    display: flex;
-    align-items: center;
+    @include flex-center;
     gap: 4px;
     text-decoration: none;
     color: $color-black;
@@ -27,16 +28,13 @@
   }
 
   &__title {
-    font-family: $font-main;
+    @include text-body;
     font-weight: 500;
-    font-size: 16px;
     line-height: 1;
-    color: $color-black;
   }
 
   &__form {
-    display: flex;
-    justify-content: center;
+    @include flex-center;
     margin-top: 88px;
   }
 
@@ -46,18 +44,15 @@
 }
 
 .auth-form {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
+  @include flex-column(24px);
+
   &--signin {
     gap: 32px;
   }
 
   &__actions {
-    display: flex;
-    flex-direction: column;
+    @include flex-column;
     align-items: center;
-
 
     &--signup {
       margin-top: 8px;
@@ -65,69 +60,49 @@
   }
 
   &__header {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
+    @include flex-column(8px);
+
     &--signin {
       margin-bottom: 8px;
     }
   }
 
   &__title {
-    font-family: $font-main;
-    font-weight: 500;
-    font-size: 56px;
-    line-height: 1.25;
-    color: $color-black;
+    @include text-h1;
     margin: 0;
   }
 
   &__subtitle {
-    font-family: $font-main;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 1.4;
-    color: $color-black;
+    @include text-body-lg;
   }
 
   &__step {
     display: flex;
-    align-items: center;
     gap: 8px;
-    font-family: $font-main;
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 1.4;
-    color: $color-black;
+    @include text-body;
+    @include text-semibold;
   }
 
   &__back {
     background: none;
     border: none;
     padding: 0;
-    display: flex;
-    align-items: center;
     cursor: pointer;
 
+    @include flex-center;
+
     img {
-      width: 24px;
-      height: 24px;
+      @include icon-24;
     }
   }
 
   &__fields {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
+    @include flex-column(16px);
   }
 
   &__label {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    font-size: 16px;
-    font-family: $font-main;
-    line-height: 1.4;
+    @include flex-column(4px);
+    @include text-body;
 
     &-text {
       padding-left: 16px;
@@ -135,37 +110,20 @@
   }
 
   &__label-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    @include flex-between;
   }
 
   &__error {
-    font-size: 14px;
-    line-height: 1.4;
+    @include text-caption;
     color: $color-error;
-    font-weight: 400;
   }
 
   &__input {
     width: 100%;
-    height: $control-height;
-    padding: 16px;
-    border: 1px solid $color-gray-main;
-    border-radius: 4px;
-    font-size: 16px;
-    font-family: $font-main;
-    color: $color-black;
-
-    &:focus {
-      outline: none;
-      border-color: $color-gray-main;
-    }
+    @include control-base;
 
     &::placeholder {
-      font-size: 18px;
-      font-weight: 400;
-      line-height: 1.4;
+      @include text-body-lg;
       color: $color-gray-hint;
     }
 
@@ -176,61 +134,42 @@
 
   &__button {
     width: 100%;
-    height: $control-height;
-    background: $color-gray-main;
-    color: $color-white;
-    border: none;
-    border-radius: 0;
-    font-family: $font-main;
-    font-size: 18px;
-    font-weight: 400;
-    line-height: 1.4;
-    cursor: pointer;
+    @include button-base;
+    @include button-disabled;
 
     &--active {
-      background: $color-black;
+      @include button-primary;
+
     }
   }
 
   &__signin {
     margin-top: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include flex-center;
     gap: 16px;
-    font-family: $font-main;
-    font-size: 16px;
-    line-height: 1.4;
-    color: $color-black;
+    @include text-body;
   }
 
   &__signin-link {
-    color: $color-black;
+    @include text-body;
     text-decoration: underline;
-    line-height: 1.4;
-    font-size: 16px;
-    font-weight: 400;
     align-self: flex-end;
     color: $color-black;
   }
 
   &__hint {
-    font-family: $font-main;
-    font-size: 16px;
-    line-height: 1.4;
-    font-weight: 400;
+    @include text-body;
     color: $color-gray-hint;
   }
 
   &__phone {
-    display: flex;
+    @include flex-center;
     height: $control-height;
     border: 1px solid $color-gray-border;
   }
 
   &__country {
-    display: flex;
-    align-items: center;
+    @include flex-center;
     gap: 8px;
     padding: 0 16px;
     background: $color-gray-bg;
@@ -242,8 +181,7 @@
     }
 
     span {
-      font-size: 18px;
-      font-family: $font-main;
+      @include text-body-lg;
     }
   }
 
@@ -251,38 +189,28 @@
     flex: 1;
     border: none;
     padding: 0 16px;
-    font-size: 18px;
-    font-family: $font-main;
+    @include text-body-lg;
     outline: none;
 
     &::placeholder {
       color: $color-gray-main;
-      font-size: 18px;
+      @include text-body-lg;
     }
   }
 
   &__radio-group {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
+    @include flex-column(16px);
   }
 
   &__radio-title {
-    font-family: $font-main;
-    font-size: 18px;
-    font-weight: 400;
-    color: $color-black;
-    line-height: 1.4;
+    @include text-body-lg;
   }
 
   &__radio {
-    display: flex;
-    align-items: center;
+    @include flex-center;
+    justify-content: flex-start;
     gap: 12px;
-    font-family: $font-main;
-    font-size: 18px;
-    font-weight: 400;
-    color: $color-black;
+    @include text-body-lg;
     cursor: pointer;
 
     input {
@@ -302,27 +230,23 @@
     right: 16px;
     top: 50%;
     transform: translateY(-50%);
-    width: 24px;
-    height: 24px;
+    @include icon-24;
     cursor: pointer;
   }
 
   &__checkbox {
-    display: flex;
-    align-items: center;
+    @include flex-center;
+    justify-content: flex-start;
     gap: 8px;
     cursor: pointer;
-    font-size: 16px;
-    font-family: $font-main;
+    @include text-body;
   }
 
   &__checkbox-box {
+    @include flex-center;
     width: 24px;
     height: 24px;
     border: 1px solid $color-gray-main;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 
     &--checked {
       border-color: $color-black;
@@ -335,13 +259,12 @@
   }
 
   &__checkbox-text {
-    line-height: 1.4;
-    font-size: 18px;
+    @include text-body-lg;
   }
 
   &__forgot-link {
     margin-left: auto;
-    font-size: 18px;
+    @include text-body-lg;
     font-weight: 500;
     text-decoration: none;
     color: $color-black;

@@ -3,7 +3,7 @@ import type { ReactNode } from 'react';
 
 type AuthContextType = {
   isAuth: boolean;
-  login: () => void;
+  login: (email: string, password: string) => Promise<void>;
   logout: () => void;
 };
 
@@ -19,8 +19,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     }
   }, []);
 
-
-  const login = () => {
+  const login = async (email: string, password: string) => {
     setIsAuth(true);
     localStorage.setItem('isAuth', 'true');
   };
