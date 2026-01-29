@@ -2,16 +2,21 @@ import os
 import dj_database_url
 from datetime import timedelta
 from pathlib import Path
+from dotenv import load_dotenv
 
 
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 DEBUG = os.environ.get("DEBUG", "False").lower() == "true"
-if DEBUG:
-    from dotenv import load_dotenv
-    load_dotenv()
+STATIC_URL = "/static/"
+STATIC_ROOT = BASE_DIR / "staticfiles"
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+]
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 
 SECRET_KEY = os.environ["SECRET_KEY"]
@@ -84,7 +89,7 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # Database
 DATABASES = {
     "default": dj_database_url.config(
-        default=os.environ.get("DATABASE_URL"),
+        default="postgresql://postgres:YAFQTQXTQnGceeciCLfMKBnKwFcJSMKK@switchyard.proxy.rlwy.net:27531/railway",
         conn_max_age=600,
         ssl_require=not DEBUG,
     )
