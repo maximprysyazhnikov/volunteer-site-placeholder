@@ -23,11 +23,6 @@ const SignUpStep4 = () => {
   const isMatch = password === confirm;
   const isValid = isPasswordValid(password, confirm) && agree;
 
-<<<<<<< HEAD
-  const handleSubmit = (path: string) => {
-    if (!isValid) return;
-    navigate(path);
-=======
   const handleSubmit = async () => {
     if (!isValid) return;
 
@@ -39,14 +34,13 @@ const SignUpStep4 = () => {
       console.error('Registration failed:', error);
       // пізніше можна додати показ помилки користувачу
     }
->>>>>>> 3e69daa1cfb9b5fe618711fd9b3bdfb89d317eed
   };
 
   return (
       <SignUpForm 
         step={4} 
         isValid={isValid} 
-        onContinue={() => handleSubmit('/signin')}
+        onContinue={handleSubmit}
         path='administrationsignup'
       >
         {/* Password */}
@@ -86,24 +80,6 @@ const SignUpStep4 = () => {
             )}
           </span>
 
-<<<<<<< HEAD
-          <div className='auth-form__password'>
-            <input
-              className={`auth-form__input ${confirm && !isMatch ? 'auth-form__input--error' : ''}`}
-              type={showPassword ? 'text' : 'password'}
-              value={confirm}
-              placeholder='Confirm your password'
-              onChange={(e) => setConfirm(e.target.value)}
-            />
-            <img
-              src={showPassword ? eyeOpen : eyeClosed}
-              alt='Toggle password'
-              className='auth-form__eye'
-              onClick={() => setShowPassword((v) => !v)}
-            />
-          </div>
-        </label>
-=======
         <div className='auth-form__password'>
           <input
             className={`auth-form__input ${confirm && !isMatch ? 'auth-form__input--error' : ''}`}
@@ -120,7 +96,6 @@ const SignUpStep4 = () => {
           />
         </div>
       </label>
->>>>>>> 3e69daa1cfb9b5fe618711fd9b3bdfb89d317eed
 
         {/* Checkbox */}
         <label className='auth-form__checkbox'>
