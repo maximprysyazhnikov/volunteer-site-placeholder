@@ -14,13 +14,18 @@ export const registerRequest = async (data: RegisterRequest): Promise<void> => {
 
   if (!response.ok) {
     const error = await response.json();
-    throw new Error(error.detail || 'Registration failed');
+    console.error(error);
+    throw new Error(
+      typeof error.detail === 'string'
+        ? error.detail
+        : JSON.stringify(error) || 'Registration failed',
+    );
   }
 };
 
 export const loginRequest = async (
   email: string,
-  password: string
+  password: string,
 ): Promise<LoginResponse> => {
   const response = await fetch(`${BASE_URL}/auth/login/`, {
     method: 'POST',
@@ -29,7 +34,8 @@ export const loginRequest = async (
   });
 
   if (!response.ok) {
-    throw new Error('Login failed');
+    const error = await response.json();
+    throw new Error(JSON.stringify(error));
   }
 
   return response.json();

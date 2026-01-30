@@ -9,6 +9,13 @@ import checkIcon from '../../../assets/checkbox-check.svg';
 import { useSignUp } from '../../../context/SignUpContext';
 import { registerRequest } from '../../../api/auth.api';
 
+type BackendErrors = {
+  password?: string[];
+  email?: string[];
+  phone_number?: string[];
+  detail?: string;
+};
+
 const SignUpStep4 = () => {
   const { data, setPassword, reset } = useSignUp();
   const { password } = data;
@@ -16,6 +23,8 @@ const SignUpStep4 = () => {
   const [confirm, setConfirm] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [agree, setAgree] = useState(false);
+
+  const [backendErrors, setBackendErrors] = useState<BackendErrors>({});
 
   const navigate = useNavigate();
 
@@ -30,9 +39,9 @@ const SignUpStep4 = () => {
       await registerRequest(data);
       reset();
       navigate('/signin');
-    } catch (error) {
-      console.error('Registration failed:', error);
-      // пізніше можна додати показ помилки користувачу
+    } catch (error: any) {
+      console.log('Backend error:', error);
+      setBackendErrors(error);
     }
   };
 
