@@ -5,10 +5,10 @@ import SignUpForm from './SignUpForm';
 import eyeOpen from '../../../assets/eye-open.svg';
 import eyeClosed from '../../../assets/eye-closed.svg';
 import checkIcon from '../../../assets/checkbox-check.svg';
+
 import { useSignUp } from '../../../context/SignUpContext';
 import { registerRequest } from '../../../api/auth.api';
 import { useToast } from '../../../context/ToastContext';
-
 
 const SignUpStep4 = () => {
   const {
@@ -25,16 +25,17 @@ const SignUpStep4 = () => {
   const [confirm, setConfirm] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [agree, setAgree] = useState(false);
-
   const [hasSubmitted, setHasSubmitted] = useState(false);
-  const { showToast } = useToast();
 
+  const { showToast } = useToast();
   const navigate = useNavigate();
 
+  // local validation (как у напарника)
   const isMinLength = password.length >= 8;
   const isMatch = password === confirm;
-  const canSubmit = isMinLength && isMatch && agree;
+  const isValid = isMinLength && isMatch && agree;
 
+  // backend global error (твой апгрейд)
   const globalError =
     backendErrors.email?.[0] ||
     backendErrors.phone_number?.[0] ||
@@ -44,8 +45,7 @@ const SignUpStep4 = () => {
 
   const handleSubmit = async () => {
     setHasSubmitted(true);
-
-    if (!canSubmit) return;
+    if (!isValid) return;
 
     try {
       await registerRequest(data);
@@ -57,7 +57,7 @@ const SignUpStep4 = () => {
         navigate('/signin');
       }, 2500);
     } catch (error: any) {
-      console.log('Backend error:', error);
+      console.error('Registration failed:', error);
       setBackendErrors(error);
     }
   };
@@ -65,28 +65,28 @@ const SignUpStep4 = () => {
   return (
     <SignUpForm
       step={4}
-      isValid={canSubmit}
+      isValid={isValid}
       onContinue={handleSubmit}
       globalError={globalError}
-      submitLabel='Sign up'
+      submitLabel="Sign up"
     >
       {/* Password */}
-      <label className='auth-form__label auth-form__label--with-error'>
-        <span className='auth-form__label-row'>
-          <span className='auth-form__label-text'>Password</span>
+      <label className="auth-form__label auth-form__label--with-error">
+        <span className="auth-form__label-row">
+          <span className="auth-form__label-text">Password</span>
 
           {hasSubmitted && backendErrors.password && (
-            <span className='auth-form__error'>
+            <span className="auth-form__error">
               {backendErrors.password[0]}
             </span>
           )}
 
           {!backendErrors.password && !isMinLength && password && (
-            <span className='auth-form__error'>Minimum 8 characters</span>
+            <span className="auth-form__error">Minimum 8 characters</span>
           )}
         </span>
 
-        <div className='auth-form__password'>
+        <div className="auth-form__password">
           <input
             className={`auth-form__input ${
               (hasSubmitted && backendErrors.password) ||
@@ -96,7 +96,7 @@ const SignUpStep4 = () => {
             }`}
             type={showPassword ? 'text' : 'password'}
             value={password}
-            placeholder='Create a password'
+            placeholder="Create a password"
             onChange={(e) => {
               setPassword(e.target.value);
               clearBackendError('password');
@@ -105,51 +105,56 @@ const SignUpStep4 = () => {
 
           <img
             src={showPassword ? eyeOpen : eyeClosed}
-            alt='Toggle password'
-            className='auth-form__eye'
-            onClick={() => setShowPassword((v) => !v)}
+            alt="Toggle password"
+            className="auth-form__eye"
+            onClick={() => setShowPassword(v => !v)}
           />
         </div>
 
-        <span className='auth-form__hint'>Minimum 8 characters</span>
+        <span className="auth-form__hint">Minimum 8 characters</span>
       </label>
 
-      {/* Confirm */}
-      <label className='auth-form__label auth-form__label--with-error'>
-        <span className='auth-form__label-row'>
-          <span className='auth-form__label-text'>Confirm password</span>
+      {/* Confirm password */}
+      <label className="auth-form__label auth-form__label--with-error">
+        <span className="auth-form__label-row">
+          <span className="auth-form__label-text">Confirm password</span>
           {confirm && !isMatch && (
-            <span className='auth-form__error'>Passwords do not match</span>
+            <span className="auth-form__error">Passwords do not match</span>
           )}
         </span>
 
-        <div className='auth-form__password'>
+        <div className="auth-form__password">
           <input
-            className={`auth-form__input ${confirm && !isMatch ? 'auth-form__input--error' : ''}`}
+            className={`auth-form__input ${
+              confirm && !isMatch ? 'auth-form__input--error' : ''
+            }`}
             type={showPassword ? 'text' : 'password'}
             value={confirm}
-            placeholder='Confirm your password'
+            placeholder="Confirm your password"
             onChange={(e) => setConfirm(e.target.value)}
           />
+
           <img
             src={showPassword ? eyeOpen : eyeClosed}
-            alt='Toggle password'
-            className='auth-form__eye'
-            onClick={() => setShowPassword((v) => !v)}
+            alt="Toggle password"
+            className="auth-form__eye"
+            onClick={() => setShowPassword(v => !v)}
           />
         </div>
       </label>
 
       {/* Checkbox */}
-      <label className='auth-form__checkbox'>
+      <label className="auth-form__checkbox">
         <span
-          className={`auth-form__checkbox-box ${agree ? 'auth-form__checkbox-box--checked' : ''}`}
+          className={`auth-form__checkbox-box ${
+            agree ? 'auth-form__checkbox-box--checked' : ''
+          }`}
           onClick={() => setAgree(!agree)}
         >
-          {agree && <img src={checkIcon} alt='checked' />}
+          {agree && <img src={checkIcon} alt="checked" />}
         </span>
 
-        <span className='auth-form__checkbox-text'>
+        <span className="auth-form__checkbox-text">
           I agree to the Terms of Use and Privacy Policy
         </span>
       </label>

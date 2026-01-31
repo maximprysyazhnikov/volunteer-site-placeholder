@@ -6,18 +6,13 @@ type Props = {
   isValid: boolean;
   onContinue: () => void;
   children: React.ReactNode;
-  globalError?: string;
+  path?: string;
+   globalError?: string;
   submitLabel?: string;
 };
 
-const SignUpForm = ({
-  step,
-  isValid,
-  onContinue,
-  children,
-  globalError,
-  submitLabel,
-}: Props) => {
+const SignUpForm = ({ step, isValid, onContinue, children, path = "signup", globalError,
+  submitLabel, }: Props) => {
   return (
     <div className='auth-layout__container auth-form'>
       <div className='auth-form__header'>
@@ -28,8 +23,8 @@ const SignUpForm = ({
       </div>
 
       <div className='auth-form__step'>
-        {step > 1 && (
-          <Link to={`/signup/step-${step - 1}`} className='auth-form__back'>
+        {step && step > 1 && (
+          <Link to={`/${path}/step-${step - 1}`} className='auth-form__back'>
             <img src={arrowLeft} alt='Back' />
           </Link>
         )}

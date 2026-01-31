@@ -3,8 +3,17 @@ import { useNavigate } from 'react-router-dom';
 import { useSignUp } from '../../../context/SignUpContext';
 import SignUpForm from './SignUpForm';
 import uaFlag from '../../../assets/flag-ukraine.svg';
+import {
+  isEmailValid,
+  isPhoneValid,
+  formatPhone,
+} from '../../../utils/validators';
 
-const SignUpStep2 = () => {
+type Props = {
+  admin?: boolean;
+};
+
+const SignUpStep2 = ({ admin = false }: Props) => {
   const { data, setEmail, setPhone, backendErrors, clearBackendError } =
     useSignUp();
 
@@ -15,35 +24,22 @@ const SignUpStep2 = () => {
 
   const navigate = useNavigate();
 
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  const isEmailValid = emailRegex.test(email);
-  const isPhoneValid = phone.replace(/\D/g, '').length === 9;
-
   const isFilled = Boolean(email && phone);
 
   const handleContinue = () => {
-    const emailOk = isEmailValid;
-    const phoneOk = isPhoneValid;
+    const emailOk = isEmailValid(email);
+    const phoneOk = isPhoneValid(phone);
 
     setEmailError(!emailOk);
     setPhoneError(!phoneOk);
 
     if (!emailOk || !phoneOk) return;
 
-    navigate('/signup/step-3');
-  };
-
-  const formatPhone = (value: string) => {
-    const digits = value.replace(/\D/g, '').slice(0, 9);
-
-    const parts = [
-      digits.slice(0, 2),
-      digits.slice(2, 5),
-      digits.slice(5, 7),
-      digits.slice(7, 9),
-    ].filter(Boolean);
-
-    return parts.join('-');
+    navigate(
+      admin
+        ? '/administrationsignup/step-3'
+        : '/signup/step-3'
+    );
   };
 
   return (
@@ -62,7 +58,9 @@ const SignUpStep2 = () => {
 
         <input
           className={`auth-form__input ${
-            emailError || backendErrors.email ? 'auth-form__input--error' : ''
+            emailError || backendErrors.email
+              ? 'auth-form__input--error'
+              : ''
           }`}
           type='email'
           value={email}
@@ -82,7 +80,8 @@ const SignUpStep2 = () => {
 
           {(phoneError || backendErrors.phone_number) && (
             <span className='auth-form__error'>
-              {backendErrors.phone_number?.[0] || 'Enter full phone number'}
+              {backendErrors.phone_number?.[0] ||
+                'Enter full phone number'}
             </span>
           )}
         </span>
@@ -120,3 +119,4 @@ const SignUpStep2 = () => {
 };
 
 export default SignUpStep2;
+
