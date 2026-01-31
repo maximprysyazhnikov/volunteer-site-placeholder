@@ -1,44 +1,61 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import SignUpForm from './SignUpForm';
-import { isPasswordValid } from '../../../utils/validators';
 
 import eyeOpen from '../../../assets/eye-open.svg';
 import eyeClosed from '../../../assets/eye-closed.svg';
 import checkIcon from '../../../assets/checkbox-check.svg';
 import { useSignUp } from '../../../context/SignUpContext';
 import { registerRequest } from '../../../api/auth.api';
+import { useToast } from '../../../context/ToastContext';
 
-type BackendErrors = {
-  password?: string[];
-  email?: string[];
-  phone_number?: string[];
-  detail?: string;
-};
 
 const SignUpStep4 = () => {
-  const { data, setPassword, reset } = useSignUp();
+  const {
+    data,
+    setPassword,
+    reset,
+    backendErrors,
+    setBackendErrors,
+    clearBackendError,
+  } = useSignUp();
+
   const { password } = data;
 
   const [confirm, setConfirm] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [agree, setAgree] = useState(false);
 
-  const [backendErrors, setBackendErrors] = useState<BackendErrors>({});
+  const [hasSubmitted, setHasSubmitted] = useState(false);
+  const { showToast } = useToast();
 
   const navigate = useNavigate();
 
   const isMinLength = password.length >= 8;
   const isMatch = password === confirm;
-  const isValid = isPasswordValid(password, confirm) && agree;
+  const canSubmit = isMinLength && isMatch && agree;
+
+  const globalError =
+    backendErrors.email?.[0] ||
+    backendErrors.phone_number?.[0] ||
+    backendErrors.first_name?.[0] ||
+    backendErrors.last_name?.[0] ||
+    backendErrors.detail;
 
   const handleSubmit = async () => {
-    if (!isValid) return;
+    setHasSubmitted(true);
+
+    if (!canSubmit) return;
 
     try {
       await registerRequest(data);
-      reset();
-      navigate('/signin');
+
+      showToast('Registration successful 🎉');
+
+      setTimeout(() => {
+        reset();
+        navigate('/signin');
+      }, 2500);
     } catch (error: any) {
       console.log('Backend error:', error);
       setBackendErrors(error);
@@ -46,24 +63,46 @@ const SignUpStep4 = () => {
   };
 
   return (
-    <SignUpForm step={4} isValid={isValid} onContinue={handleSubmit}>
+    <SignUpForm
+      step={4}
+      isValid={canSubmit}
+      onContinue={handleSubmit}
+      globalError={globalError}
+      submitLabel='Sign up'
+    >
       {/* Password */}
       <label className='auth-form__label auth-form__label--with-error'>
         <span className='auth-form__label-row'>
           <span className='auth-form__label-text'>Password</span>
-          {!isMinLength && password && (
+
+          {hasSubmitted && backendErrors.password && (
+            <span className='auth-form__error'>
+              {backendErrors.password[0]}
+            </span>
+          )}
+
+          {!backendErrors.password && !isMinLength && password && (
             <span className='auth-form__error'>Minimum 8 characters</span>
           )}
         </span>
 
         <div className='auth-form__password'>
           <input
-            className={`auth-form__input ${!isMinLength && password ? 'auth-form__input--error' : ''}`}
+            className={`auth-form__input ${
+              (hasSubmitted && backendErrors.password) ||
+              (!isMinLength && password)
+                ? 'auth-form__input--error'
+                : ''
+            }`}
             type={showPassword ? 'text' : 'password'}
             value={password}
             placeholder='Create a password'
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={(e) => {
+              setPassword(e.target.value);
+              clearBackendError('password');
+            }}
           />
+
           <img
             src={showPassword ? eyeOpen : eyeClosed}
             alt='Toggle password'

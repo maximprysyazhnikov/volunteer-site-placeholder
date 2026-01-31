@@ -6,9 +6,18 @@ type Props = {
   isValid: boolean;
   onContinue: () => void;
   children: React.ReactNode;
+  globalError?: string;
+  submitLabel?: string;
 };
 
-const SignUpForm = ({ step, isValid, onContinue, children }: Props) => {
+const SignUpForm = ({
+  step,
+  isValid,
+  onContinue,
+  children,
+  globalError,
+  submitLabel,
+}: Props) => {
   return (
     <div className='auth-layout__container auth-form'>
       <div className='auth-form__header'>
@@ -30,13 +39,17 @@ const SignUpForm = ({ step, isValid, onContinue, children }: Props) => {
       <div className='auth-form__fields'>{children}</div>
 
       <div className='auth-form__actions auth-form__actions--signup'>
+        <div className='auth-form__global-error-wrapper'>
+          <div className='auth-form__global-error'>{globalError ?? ''}</div>
+        </div>
+
         <button
           className={`auth-form__button ${isValid ? 'auth-form__button--active' : ''}`}
           disabled={!isValid}
           onClick={onContinue}
           type='button'
         >
-          Continue
+          {submitLabel ?? 'Continue'}
         </button>
 
         <div className='auth-form__signin'>

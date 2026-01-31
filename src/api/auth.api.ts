@@ -3,23 +3,16 @@ import type { RegisterRequest } from './types/auth';
 
 const BASE_URL = 'https://alert-ambition-dev.up.railway.app/api/v1';
 
-export const registerRequest = async (data: RegisterRequest): Promise<void> => {
+export const registerRequest = async (data: RegisterRequest) => {
   const response = await fetch(`${BASE_URL}/user/register/`, {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
+    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data),
   });
 
   if (!response.ok) {
     const error = await response.json();
-    console.error(error);
-    throw new Error(
-      typeof error.detail === 'string'
-        ? error.detail
-        : JSON.stringify(error) || 'Registration failed',
-    );
+    throw error;
   }
 };
 

@@ -5,7 +5,7 @@ import { useSignUp } from '../../../context/SignUpContext';
 const SignUpStep3 = () => {
   const { data, setRole } = useSignUp();
   const { role } = data;
-
+  
   const navigate = useNavigate();
 
   const isValid = Boolean(role);
