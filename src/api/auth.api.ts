@@ -20,7 +20,7 @@ export const loginRequest = async (
   email: string,
   password: string,
 ): Promise<LoginResponse> => {
-  const response = await fetch(`${BASE_URL}/auth/login/`, {
+  const response = await fetch(`${BASE_URL}/user/token/`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ email, password }),

@@ -36,16 +36,12 @@ const SignUpStep4 = () => {
   const { showToast } = useToast();
   const navigate = useNavigate();
 
-  // ===== SUBMIT CONDITIONS (НЕ ВСЯ ВАЛИДАЦИЯ) =====
-  const canSubmit =
-    password.length >= 8 &&
-    password === confirm &&
-    agree;
+  // ===== SUBMIT CONDITIONS =====
+  const canSubmit = password.length >= 8 && password === confirm && agree;
 
   // ===== STATIC / DYNAMIC HINT =====
   const passwordHint = (() => {
-    if (!password || password.length < 8)
-      return 'Minimum 8 characters';
+    if (!password || password.length < 8) return 'Minimum 8 characters';
     if (!hasUppercaseLetter(password))
       return 'Must contain at least one uppercase Latin letter';
     if (!hasLowercaseLetter(password))
@@ -57,8 +53,7 @@ const SignUpStep4 = () => {
 
   // ===== BACKEND ERROR =====
   const globalError =
-    backendErrors.first_name?.[0] ||
-    backendErrors.last_name?.[0]
+    backendErrors.first_name?.[0] || backendErrors.last_name?.[0]
       ? 'First name and last name must not be empty.'
       : backendErrors.detail ||
         backendErrors.email?.[0] ||
@@ -122,14 +117,12 @@ const SignUpStep4 = () => {
             src={showPassword ? eyeOpen : eyeClosed}
             alt='Toggle password'
             className='auth-form__eye'
-            onClick={() => setShowPassword(v => !v)}
+            onClick={() => setShowPassword((v) => !v)}
           />
         </div>
 
         {/* GREY HINT */}
-        <span className='auth-form__hint'>
-          {passwordHint}
-        </span>
+        <span className='auth-form__hint'>{passwordHint}</span>
       </label>
 
       {/* CONFIRM */}
@@ -137,9 +130,7 @@ const SignUpStep4 = () => {
         <span className='auth-form__label-row'>
           <span className='auth-form__label-text'>Confirm password</span>
           {hasSubmitted && confirm !== password && (
-            <span className='auth-form__error'>
-              Passwords do not match
-            </span>
+            <span className='auth-form__error'>Passwords do not match</span>
           )}
         </span>
 

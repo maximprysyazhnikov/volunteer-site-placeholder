@@ -47,9 +47,9 @@
   display: flex;
   flex-direction: column;
 
-  &--signin {
-    gap: 32px;
-  }
+  // &--signin {
+  //   gap: 32px;
+  // }
 
   &__actions {
     @include flex-column;
@@ -65,7 +65,7 @@
     margin-bottom: 24px;
 
     &--signin {
-      margin-bottom: 8px;
+      margin-bottom: 40px;
     }
   }
 
@@ -100,7 +100,7 @@
   }
 
   &__fields {
-    @include flex-column(16px);
+    @include flex-column(32px);
   }
 
   &__label {
