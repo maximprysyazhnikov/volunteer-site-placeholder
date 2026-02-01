@@ -26,7 +26,8 @@ from .serializers import (
     PasswordResetRequestSerializer,
     RegisterSerializer,
     UserRetrieveSerializer,
-    EmailAvailabilitySerializer
+    EmailAvailabilitySerializer,
+    PhoneNumberAvailabilitySerializer
 )
 from .utils import generate_reset_code
 
@@ -355,5 +356,28 @@ class CheckEmailAvailabilityView(APIView):
 
         return Response(
             {"detail": "Email is available"},
+            status=status.HTTP_200_OK,
+        )
+
+
+class CheckPhoneNumberAvailabilityView(APIView):
+    permission_classes = [AllowAny]
+
+    @extend_schema(
+        summary="Check phone number availability",
+        description="Check if a phone number can be used for registration.",
+        request=PhoneNumberAvailabilitySerializer,
+        responses={
+            200: OpenApiResponse(description="phone number is available"),
+            400: OpenApiResponse(description="phone number is invalid or already registered"),
+        },
+        tags=["Auth"],
+    )
+    def post(self, request):
+        serializer = PhoneNumberAvailabilitySerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+
+        return Response(
+            {"detail": "Phone number is available"},
             status=status.HTTP_200_OK,
         )
