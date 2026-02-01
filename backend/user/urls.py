@@ -6,6 +6,7 @@ from user.views import (
     UserViewSet,
     confirm_password_reset,
     request_password_reset,
+    CheckEmailAvailabilityView
 )
 
 from .views import RegisterView
@@ -18,5 +19,6 @@ urlpatterns = [
     path("user/password-reset/request/", request_password_reset, name="password_reset_request"),
     path("user/password-reset/confirm/", confirm_password_reset),
     path("user/register/admin/",AdminRegisterView.as_view() , name="admin-register"),
+    path("user/check-email-availability/", CheckEmailAvailabilityView.as_view(), name="check_email_availability"),
     path("", include(router.urls)),
 ]
