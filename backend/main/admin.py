@@ -1,10 +1,16 @@
 from django.contrib import admin
 
-from .models import Help, HelpCategory
+from .models import Help, HelpCategory, City
 
 
 @admin.register(HelpCategory)
 class HelpCategoryAdmin(admin.ModelAdmin):
+    list_display = ("name",)
+    search_fields = ("name",)
+
+
+@admin.register(City)
+class CityAdmin(admin.ModelAdmin):
     list_display = ("name",)
     search_fields = ("name",)
 

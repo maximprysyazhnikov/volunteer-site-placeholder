@@ -4,9 +4,9 @@ from rest_framework import status
 from rest_framework.decorators import action, api_view
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
-from rest_framework.viewsets import ModelViewSet
+from rest_framework.viewsets import ModelViewSet, ViewSet
 
-from main.models import Help, HelpCategory
+from main.models import Help, HelpCategory, City
 from user.models import User
 
 from .permissions import IsAdminOrIsOwner, IsAdminOrReadOnly
@@ -14,6 +14,7 @@ from .serializers import (
     HelpCategorySerializer,
     HelpListSerializer,
     HelpRetrieveSerializer,
+    CitySerializer
 )
 
 from rest_framework.filters import OrderingFilter
@@ -296,3 +297,35 @@ class HelpViewSet(ModelViewSet):
             {"detail": "Help is done"},
             status=status.HTTP_200_OK,
         )
+
+@extend_schema_view(
+    list=extend_schema(
+        summary="List cities",
+        tags=["Cities"],
+    ),
+    retrieve=extend_schema(
+        summary="Retrieve a city",
+        tags=["Cities"],
+    ),
+    create=extend_schema(
+        summary="Create a city (admin only)",
+        tags=["Cities"],
+    ),
+    update=extend_schema(
+        summary="Update a city (PUT, admin only)",
+        tags=["Cities"],
+    ),
+    partial_update=extend_schema(
+        summary="Partially update a city (PATCH, admin only)",
+        description="Update one or more fields of a city",
+        tags=["Cities"],
+    ),
+    destroy=extend_schema(
+        summary="Delete a city (admin only)",
+        tags=["Cities"],
+    ),
+)
+class CityViewSet(ModelViewSet):
+    queryset = City.objects.all()
+    serializer_class = CitySerializer
+    permission_classes = [IsAdminOrReadOnly]
