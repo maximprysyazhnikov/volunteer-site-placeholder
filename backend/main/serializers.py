@@ -1,10 +1,10 @@
 from rest_framework import serializers
 from rest_framework.exceptions import ValidationError
 
+from user.models import User
 from user.serializers import UserRetrieveSerializer
 
-from .models import Help, HelpCategory, City
-from user.models import User
+from .models import City, Help, HelpCategory
 
 
 class HelpCategorySerializer(serializers.ModelSerializer):

@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Help, HelpCategory, City
+from .models import City, Help, HelpCategory
 
 
 @admin.register(HelpCategory)

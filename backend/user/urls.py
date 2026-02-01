@@ -3,12 +3,12 @@ from rest_framework.routers import DefaultRouter
 
 from user.views import (
     AdminRegisterView,
+    CheckEmailAvailabilityView,
+    CheckPhoneNumberAvailabilityView,
+    LogoutView,
     UserViewSet,
     confirm_password_reset,
     request_password_reset,
-    CheckEmailAvailabilityView,
-    CheckPhoneNumberAvailabilityView,
-    LogoutView
 )
 
 from .views import RegisterView

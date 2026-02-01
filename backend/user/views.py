@@ -22,14 +22,14 @@ from .permissions import UserAccessPermission
 from .serializers import (
     AdminRegisterSerializer,
     CustomTokenObtainPairSerializer,
+    EmailAvailabilitySerializer,
+    LogoutSerializer,
     PasswordResetConfirmSerializer,
     PasswordResetRequestSerializer,
+    PhoneNumberAvailabilitySerializer,
     RegisterSerializer,
     UserRetrieveSerializer,
-    EmailAvailabilitySerializer,
-    PhoneNumberAvailabilitySerializer,
-    LogoutSerializer
-    )
+)
 from .utils import generate_reset_code
 
 

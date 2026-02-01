@@ -1,7 +1,7 @@
 from django.urls import include, path
 from rest_framework import routers
 
-from .views import HelpCategoryViewSet, HelpViewSet, ping, CityViewSet
+from .views import CityViewSet, HelpCategoryViewSet, HelpViewSet, ping
 
 router = routers.DefaultRouter()
 router.register('help-category', HelpCategoryViewSet)

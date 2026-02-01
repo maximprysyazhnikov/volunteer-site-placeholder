@@ -7,7 +7,6 @@ from rest_framework_simplejwt.tokens import RefreshToken
 from .models import User
 
 
-
 class LogoutSerializer(serializers.Serializer):
     refresh = serializers.CharField()
 
