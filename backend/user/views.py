@@ -27,8 +27,9 @@ from .serializers import (
     RegisterSerializer,
     UserRetrieveSerializer,
     EmailAvailabilitySerializer,
-    PhoneNumberAvailabilitySerializer
-)
+    PhoneNumberAvailabilitySerializer,
+    LogoutSerializer
+    )
 from .utils import generate_reset_code
 
 
@@ -380,4 +381,28 @@ class CheckPhoneNumberAvailabilityView(APIView):
         return Response(
             {"detail": "Phone number is available"},
             status=status.HTTP_200_OK,
+        )
+
+
+class LogoutView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    @extend_schema(
+        summary="Logout user",
+        description="Invalidate refresh token (logout).",
+        request=LogoutSerializer,
+        responses={
+            205: OpenApiResponse(description="Successfully logged out"),
+            400: OpenApiResponse(description="Invalid token"),
+        },
+        tags=["Auth"],
+    )
+    def post(self, request):
+        serializer = LogoutSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+
+        return Response(
+            {"detail": "Successfully logged out"},
+            status=status.HTTP_205_RESET_CONTENT,
         )

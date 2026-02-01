@@ -7,7 +7,8 @@ from user.views import (
     confirm_password_reset,
     request_password_reset,
     CheckEmailAvailabilityView,
-    CheckPhoneNumberAvailabilityView
+    CheckPhoneNumberAvailabilityView,
+    LogoutView
 )
 
 from .views import RegisterView
@@ -26,5 +27,6 @@ urlpatterns = [
         CheckPhoneNumberAvailabilityView.as_view(),
         name="check_phone_number_availability"
     ),
+    path("user/logout/", LogoutView.as_view(), name="logout"),
     path("", include(router.urls)),
 ]
