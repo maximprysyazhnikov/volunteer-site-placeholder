@@ -1,9 +1,9 @@
 import os
-import dj_database_url
 from datetime import timedelta
 from pathlib import Path
-from dotenv import load_dotenv
 
+import dj_database_url
+from dotenv import load_dotenv
 
 load_dotenv()
 
@@ -43,6 +43,7 @@ INSTALLED_APPS = [
 
     # Third-party
     'rest_framework',
+    "rest_framework_simplejwt.token_blacklist",
     'drf_spectacular',
     "django_filters",
     "corsheaders",

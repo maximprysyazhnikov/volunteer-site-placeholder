@@ -1,25 +1,29 @@
 from django.utils import timezone
-from drf_spectacular.utils import OpenApiResponse, extend_schema, extend_schema_view, OpenApiParameter
+from django_filters.rest_framework import DjangoFilterBackend
+from drf_spectacular.utils import (
+    OpenApiParameter,
+    OpenApiResponse,
+    extend_schema,
+    extend_schema_view,
+)
 from rest_framework import status
 from rest_framework.decorators import action, api_view
+from rest_framework.filters import OrderingFilter
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
-from rest_framework.viewsets import ModelViewSet, ViewSet
+from rest_framework.viewsets import ModelViewSet
 
-from main.models import Help, HelpCategory, City
+from main.models import City, Help, HelpCategory
 from user.models import User
 
+from .filters import HelpFilter
 from .permissions import IsAdminOrIsOwner, IsAdminOrReadOnly
 from .serializers import (
+    CitySerializer,
     HelpCategorySerializer,
     HelpListSerializer,
     HelpRetrieveSerializer,
-    CitySerializer
 )
-
-from rest_framework.filters import OrderingFilter
-from django_filters.rest_framework import DjangoFilterBackend
-from .filters import HelpFilter
 
 
 @extend_schema(
@@ -187,6 +191,22 @@ class HelpViewSet(ModelViewSet):
 
     ordering_fields = ["created_at"]
     ordering = ["-created_at"]
+
+    def get_queryset(self):
+        qs = Help.objects.all()
+
+        if self.action == "list":
+            return qs.select_related(
+                "category",
+                "location",
+            )
+
+        return qs.select_related(
+            "category",
+            "location",
+            "creator",
+            "counterpart",
+        )
 
     def perform_create(self, serializer):
         serializer.save(creator=self.request.user)

@@ -1,10 +1,10 @@
 from rest_framework import serializers
 from rest_framework.exceptions import ValidationError
 
+from user.models import User
 from user.serializers import UserRetrieveSerializer
 
-from .models import Help, HelpCategory, City
-from user.models import User
+from .models import City, Help, HelpCategory
 
 
 class HelpCategorySerializer(serializers.ModelSerializer):
@@ -120,15 +120,3 @@ class HelpRetrieveSerializer(HelpListSerializer):
             "counterpart",
             "kind",
         ]
-
-
-class HelpRespondSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Help
-        fields = ()
-
-
-class HelpCompleteSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Help
-        fields = ()

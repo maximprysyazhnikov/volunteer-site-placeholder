@@ -2,8 +2,23 @@ from django.conf import settings
 from django.contrib.auth.password_validation import validate_password
 from rest_framework import serializers
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
+from rest_framework_simplejwt.tokens import RefreshToken
 
 from .models import User
+
+
+class LogoutSerializer(serializers.Serializer):
+    refresh = serializers.CharField()
+
+    def validate(self, attrs):
+        try:
+            self.token = RefreshToken(attrs["refresh"])
+        except Exception:
+            raise serializers.ValidationError("Invalid refresh token")
+        return attrs
+
+    def save(self, **kwargs):
+        self.token.blacklist()
 
 
 class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
