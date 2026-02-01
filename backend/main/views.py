@@ -192,6 +192,22 @@ class HelpViewSet(ModelViewSet):
     ordering_fields = ["created_at"]
     ordering = ["-created_at"]
 
+    def get_queryset(self):
+        qs = Help.objects.all()
+
+        if self.action == "list":
+            return qs.select_related(
+                "category",
+                "location",
+            )
+
+        return qs.select_related(
+            "category",
+            "location",
+            "creator",
+            "counterpart",
+        )
+
     def perform_create(self, serializer):
         serializer.save(creator=self.request.user)
 

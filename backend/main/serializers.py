@@ -120,15 +120,3 @@ class HelpRetrieveSerializer(HelpListSerializer):
             "counterpart",
             "kind",
         ]
-
-
-class HelpRespondSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Help
-        fields = ()
-
-
-class HelpCompleteSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Help
-        fields = ()
