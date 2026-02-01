@@ -104,3 +104,25 @@ class PasswordResetConfirmSerializer(serializers.Serializer):
     email = serializers.EmailField()
     code = serializers.CharField()
     new_password = serializers.CharField()
+
+
+class EmailAvailabilitySerializer(serializers.Serializer):
+    email = serializers.EmailField()
+
+    def validate_email(self, value):
+        if User.objects.filter(email=value).exists():
+            raise serializers.ValidationError(
+                "This email is already in use."
+            )
+        return value
+
+
+class PhoneNumberAvailabilitySerializer(serializers.Serializer):
+    phone_number = serializers.CharField()
+
+    def validate_phone_number(self, value):
+        if User.objects.filter(phone_number=value).exists():
+            raise serializers.ValidationError(
+                "This phone number is already in use."
+            )
+        return value
