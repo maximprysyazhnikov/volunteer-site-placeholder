@@ -298,7 +298,33 @@ class HelpViewSet(ModelViewSet):
             status=status.HTTP_200_OK,
         )
 
-
+@extend_schema_view(
+    list=extend_schema(
+        summary="List cities",
+        tags=["Cities"],
+    ),
+    retrieve=extend_schema(
+        summary="Retrieve a city",
+        tags=["Cities"],
+    ),
+    create=extend_schema(
+        summary="Create a city (admin only)",
+        tags=["Cities"],
+    ),
+    update=extend_schema(
+        summary="Update a city (PUT, admin only)",
+        tags=["Cities"],
+    ),
+    partial_update=extend_schema(
+        summary="Partially update a city (PATCH, admin only)",
+        description="Update one or more fields of a city",
+        tags=["Cities"],
+    ),
+    destroy=extend_schema(
+        summary="Delete a city (admin only)",
+        tags=["Cities"],
+    ),
+)
 class CityViewSet(ModelViewSet):
     queryset = City.objects.all()
     serializer_class = CitySerializer

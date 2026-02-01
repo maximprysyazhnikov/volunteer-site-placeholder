@@ -96,7 +96,7 @@ class HelpRetrieveSerializer(HelpListSerializer):
         fields = [
             "id",
             "title",
-            "location_name"
+            "location_name",
             "location",
             "description",
             "kind",
